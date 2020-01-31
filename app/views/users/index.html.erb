@@ -1,0 +1,78 @@
+<body class="body_form">
+
+  <!--
+  ===================
+  =========== bloc header document
+  ===================
+  -->
+  <header>
+
+    <!--
+    ===================
+    =========== navigation bar for telephone/tablet
+    ===================
+    -->
+    <nav class="navebar-tel-tab" style="display:block;">
+      <label class="label-chk" for="chk">&#9776;</label>
+      <input type="checkbox" class="chk" name="chk" id="chk">
+      <ul class="navebar-tel-tab--navigation">
+        <li> <a href="log_in.html">Log In </a></li>
+        <li> <a href="album.html"> Visite </a></li>
+
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="cadre">
+      <div class="text--center">
+        <h1 class="gamma">Sign up</h1>
+      </div>
+      <form action="#no-action" method="post" enctype="multipart/form-data">
+        <div class="input-group" id="bloc-name">
+          <label class="input-group__label" for="name">Name</label>
+          <input type="text" class="input-group__field" id="name" name="name" placeholder="Kandji">
+        </div>
+        <div class="input-group" id="bloc-email">
+          <label class="input-group__label" for="email">Email address</label>
+          <input type="email" class="input-group__field" id="email" name="email" placeholder="kandji.k66@gmail.com">
+        </div>
+        <div class="input-group" id="bloc-password">
+          <label class="input-group__label" for="password">Passeword</label>
+          <input type="password" class="input-group__field" id="password" name="password" placeholder="********">
+        </div>
+        <div class="input-group">
+          <label class="input-group__label" for="password2">Verification Password</label>
+          <input type="password" class="input-group__field" id="password2" name="password2" placeholder="********">
+        </div>
+        <div class="input-group" id="bloc-file">
+          <label class="input-group__label" for="img_profil"> Choice a profil picture </label>
+          <input type="file" class="input-group__field" id="img_profil" name="img_profil">
+        </div>
+        <div class="prompt">
+          <button type="button" class="btn btn--primary prompt__confirm">Sign up</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <div>
+    <div class="progressBarControl__loadingControl" id="progressBarControl__loadingControl">
+      <div class="progressBarControl__loading" id="progressBarControl__loading"> </div>
+    </div>
+    <div class="bloc_close_btn">
+      <button class="btn" id="btn" type="button" name="button">CLOSE</button>
+    </div>
+  </div>
+
+
+  <!--
+  ===================
+  ===========
+script js
+  ===================
+  -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script src="js/style.js"> </script>
+</body>

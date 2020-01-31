@@ -25,7 +25,7 @@
         <label class="label-chk" for="chk"> &#9776; </label>
         <input class="chk" id="chk" name="chk" type="checkbox">
         <ul class="navebar-tel-tab--navigation">
-          <li> <a href="latest.html"> LOG IN </a> </li>
+
           <li> <a href="album.html" class="active"> LATEST </a> </li>
         </ul>
       </nav>
@@ -42,7 +42,7 @@
             <%= image_tag("logo.svg", class: "logo", alt: "logo nubian") %> </a>
           </div>
           <ul class="main-navigation">
-            <li class="main-navigation__li"> <a href="login.html">LOG IN </a></li>
+            <li class="main-navigation__li"> <%= link_to("LOG IN",users_path)  %> </li>
             <li class="main-navigation__li"> <a href="latest.html">LATEST </a></li>
           </ul>
         </div>
