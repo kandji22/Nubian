@@ -1,0 +1,146 @@
+
+
+
+  <!--
+===================
+=========== block body document
+===================
+-->
+
+  <body class="acceuil">
+
+    <!--
+    ===================
+    =========== bloc header document
+    ===================
+    -->
+    <header class="home-header">
+
+      <!--
+      ===================
+      =========== bloc navigation bar for telephone/tablet
+      ===================
+      -->
+      <nav class="navebar-tel-tab">
+        <label class="label-chk" for="chk"> &#9776; </label>
+        <input class="chk" id="chk" name="chk" type="checkbox">
+        <ul class="navebar-tel-tab--navigation">
+          <li> <a href="latest.html"> LOG IN </a> </li>
+          <li> <a href="album.html" class="active"> LATEST </a> </li>
+        </ul>
+      </nav>
+
+      <!--
+      ===================
+      =========== bloc navigation bar for laptope
+      ===================
+      -->
+      <nav class="navebar">
+        <div class="navebar__absolute">
+          <div class="bloc_logo">
+            <a href="#">
+            <%= image_tag("logo.svg", class: "logo", alt: "logo nubian") %> </a>
+          </div>
+          <ul class="main-navigation">
+            <li class="main-navigation__li"> <a href="login.html">LOG IN </a></li>
+            <li class="main-navigation__li"> <a href="latest.html">LATEST </a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!--
+    ===================
+    ===========
+explanation concepts nubian spirit
+    ===================
+    -->
+
+    <section class="description ">
+      <h1 class="reveal__1 reveal_visible"> Nubian Spirit</h1>
+      <div class=" description__paragraphe">
+        <p class="home__paragraphe description__paragraphe--white reveal__4 reveal_visible"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+          nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+    </section>
+
+    <!--
+    ===================
+    ===========
+  biography of creator of nubian spirit
+    ===================
+    -->
+    <div class="description__artiste" title="description artiste">
+      <%= image_tag("wather.jpg", class: "description__artiste--img reveal__2 reveal_visible", alt: "image artiste") %>
+      <div class="description__paragraphe">
+        <p class="home__paragraphe description__paragraphe--black reveal__3 reveal_visible"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+          nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+    </div>
+    <div class="description__artiste">
+        <%= image_tag("aziz.jpg", class: "description__artiste--img reveal__2 reveal_visible", alt: "image artiste") %>
+      <div class="description__paragraphe reveal_visible">
+        <p class="home__paragraphe description__paragraphe--black reveal__3 reveal_visible"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+          nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+    </div>
+    <div class="description__artiste">
+      <%= image_tag("witness.jpg", class: "description__artiste--img reveal__2 reveal_visible", alt: "image artiste") %>
+      <div class="description__paragraphe reveal_visible">
+        <p class="home__paragraphe description__paragraphe--black reveal__3 reveal_visible"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+          nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+
+    </div>
+    <div class="progressBarControl__loadingControl" id="progressBarControl__loadingControl">
+      <div class="progressBarControl__loading" id="progressBarControl__loading"> </div>
+    </div>
+    <div class="bloc_close_btn">
+      <button class="btn" id="btn" type="button" name="button">CLOSE</button>
+    </div>
+
+    <!--
+    ===================
+    ===========
+  bloc footer
+    ===================
+    -->
+    <footer class="footer">
+      <ul class="footer__main">
+        <li> <a href="#">
+            <h3>Cordonnées </h3>
+          </a> </li>
+        <li> <a href="#">2 allée du Niger Giacomo A 1016 31000 Toulouse
+          </a> </li>
+        <li> <a href="#"> 06 23 97 31 62 </a>
+        </li>
+        <li> <a href="#"> contact@xavierthevenot.com </a> onkeyup=""</li>
+      </ul>
+      <ul class="footer__main">
+        <li> <a href="#">
+            <h3>Reseau Sociaux </h3>
+          </a>
+        </li>
+        <li> <a href="#">facebook </a> </li>
+        <li> <a href="#"> instagramme </a> </li>
+        <li> <a href="#">autres </a> </li>
+      </ul>
+
+    </footer>
+
+
+  </body>
+
+</html>
