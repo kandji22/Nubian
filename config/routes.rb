@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :users
   resources :sessions, only: %i[new create destroy]
+  resources :artists
 end

@@ -1,0 +1,34 @@
+<%= form_for(artist) do |form| %>
+  <% if artist.errors.any? %>
+    <%= render partial: 'model_errors', locals: { model: artist } %>
+  <% end %>
+<div class="input-group" id="bloc-name">
+  <%= form.label :name, class: 'input-group__label' %>
+    <%= form.text_field :name, class: 'input-group__field', placeholder: 'name artist', id: "name" %>
+</div>
+
+<div class="input-group" id="bloc-name">
+  <%= form.label :bibliographie, class: 'input-group__label' %>
+    <%= form.text_area :bibliographie, class: 'input-group__field', placeholder: 'bibliographie', id: "name" %>
+</div>
+
+<div class="input-group" id="bloc-name">
+  <%= form.label :url_facebook, class: 'input-group__label' %>
+    <%= form.text_field :url_facebook, class: 'input-group__field', placeholder: 'http/:...' %>
+</div>
+
+<div class="input-group" id="bloc-name">
+  <%= form.label :url_instagram, class: 'input-group__label' %>
+    <%= form.text_field :url_instagram, class: 'input-group__field', placeholder: 'http/:...' %>
+</div>
+
+<div class="input-group" id="bloc-file">
+
+  <%= form.label :photo, class: 'input-group__label' %>
+  <%= form.file_field :photo, class: "input-group__field" ,id: "img_profil" %>
+</div>
+<div class="prompt">
+
+   <%= form.submit class: "btn btn--primary prompt__confirm" %>
+</div>
+<% end %>

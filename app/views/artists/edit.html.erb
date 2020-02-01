@@ -1,0 +1,48 @@
+<body class="body_form">
+
+  <!--
+  ===================
+  =========== bloc header document
+  ===================
+  -->
+  <header>
+
+    <!--
+    ===================
+    =========== navigation bar for telephone/tablet
+    ===================
+    -->
+    <nav class="navebar-tel-tab" style="display:block;">
+      <label class="label-chk" for="chk">&#9776;</label>
+      <input type="checkbox" class="chk" name="chk" id="chk">
+      <ul class="navebar-tel-tab--navigation">
+        <li> <a href="log_in.html">Log In </a></li>
+        <li> <a href="album.html"> Visite </a></li>
+
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="cadre">
+
+      <div class="text--center">
+        <h1 class="gamma">Update Artist</h1>
+      </div>
+        <%=render(partial: "form_artist", locals: { artist: @artist})  %>
+
+    </section>
+  </main>
+
+  <div>
+    <div class="progressBarControl__loadingControl" id="progressBarControl__loadingControl">
+      <div class="progressBarControl__loading" id="progressBarControl__loading"> </div>
+    </div>
+    <div class="bloc_close_btn">
+      <button class="btn" id="btn" type="button" name="button">CLOSE</button>
+    </div>
+  </div>
+
+
+
+</body>
