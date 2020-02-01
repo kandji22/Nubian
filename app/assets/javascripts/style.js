@@ -234,3 +234,114 @@ Retrieve the coordinates of the mouse cursor
        $('.events--info').removeClass( "position_top" );
      }
    })
+
+   /**
+    *
+    function control entries form
+    */
+
+function valider() {
+  let name = document.getElementById("name")
+  let mail =document.getElementById("email")
+  let password = document.getElementById("password")
+  let password2 =document.getElementById("password2")
+  let img_profil =document.getElementById("img_profil")
+if (/^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$/.test(mail.value)) {
+
+} else {
+    let div = document.createElement("div")
+    div.className="erreur-form"
+    let span =document.createElement("span")
+    let texterreur=document.createTextNode("l address mail doit etre ecrie sous la forme nom@gmail.com")
+    span.appendChild(texterreur)
+    div.appendChild(span)
+    let bloc_erreur=document.getElementById("bloc-email")
+    bloc_erreur.appendChild(div)
+
+}
+if (name.value !=="" && name.value.length < 15) {
+
+}
+else {
+  let div2 = document.createElement("div")
+  div2.className="erreur-form"
+  let span2 =document.createElement("span")
+  let texterreur2=document.createTextNode("le champ nom doit etre remplie et le nombre de caractere ne doit pas depasser 15")
+  span2.appendChild(texterreur2)
+  div2.appendChild(span2)
+  let bloc_erreur2=document.getElementById("bloc-name")
+  bloc_erreur2.appendChild(div2)
+
+}
+if (/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/.test(password.value) && password.value === password2.value)
+{
+
+}
+else {
+  let div3 = document.createElement("div")
+  div3.className="erreur-form"
+  let span3 =document.createElement("span")
+  let texterreur3=document.createTextNode("le mot de passe de contenir au moin un chiffre un sigle et le password de vefif doit etre exacte")
+  span3.appendChild(texterreur3)
+  div3.appendChild(span3)
+  let bloc_erreur3=document.getElementById("bloc-password")
+  bloc_erreur3.appendChild(div3)
+}
+if(img_profil.value==""){
+  let div4 = document.createElement("div")
+  div4.className="erreur-form"
+  let span4 =document.createElement("span")
+  let texterreur4=document.createTextNode("il faudra choisir une image de profil")
+  span4.appendChild(texterreur4)
+  div4.appendChild(span4)
+  let bloc_erreur4=document.getElementById("bloc-file")
+  bloc_erreur4.appendChild(div4)
+}
+}
+
+/**
+ *
+ Verification file profil img
+ */
+function isImage(filename) {
+    var ext = filename.split('.').pop();
+    switch (ext.toLowerCase()) {
+    case 'jpg':
+    case 'gif':
+    case 'bmp':
+    case 'png':
+        //etc
+        return true;
+    }
+    return false;
+}
+
+document.querySelector('#img_profil').addEventListener('change', function() {
+
+    if(isImage(this.files[0].name) && this.files[0].size < 200000) {
+
+    }
+    else {
+       div4 = document.createElement("div")
+      div4.className="erreur-form"
+     span4 =document.createElement("span")
+       texterreur4=document.createTextNode("le fichier doit etre au format jpg,png,gif,bmp et le poid ne doit pas depasser 2MO")
+      span4.appendChild(texterreur4)
+      div4.appendChild(span4)
+       bloc_erreur4=document.getElementById("bloc-file")
+      bloc_erreur4.appendChild(div4)
+    }
+
+});
+
+/**
+ *
+ add event listen submit form
+ */
+
+let btn_submit=document.querySelector(".prompt__confirm")
+btn_submit.addEventListener("click",function(e){
+  e.preventDefault()
+  valider()
+
+})
