@@ -8,4 +8,10 @@ Rails.application.routes.draw do
   resources :songs
   resources :albums
   resources :agendas
+  scope '/dashboards' do
+    get 'admin/artists'
+    get 'admin/sounds'
+    get 'admin/albums'
+    get 'admin/users'
+  end
 end

@@ -1,0 +1,140 @@
+<!--
+===================
+=========== block body document
+===================
+-->
+
+<body class="admin">
+
+  <!--
+  ===================
+  =========== svg icon
+  ===================
+  -->
+  <svg style="display:none;">
+    <defs>
+      <symbol id="add_black">
+        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+        <path d="M0 0h24v24H0z" fill="none" />
+      </symbol>
+      <symbol id="delete_black">
+        <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
+        <path d="M0 0h24v24H0z" fill="none" />
+      </symbol>
+      <symbol id="edit-svg">
+        <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+        <path d="M0 0h24v24H0z" fill="none" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <!--
+===================
+=========== block header
+===================
+-->
+  <header>
+    <nav>
+      <ul class="main__admin">
+        <li> <a href="#"> Log Out </a> </li>
+        <li> <a href="#"> View Modification </a> </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!--
+  ===================
+  =========== dashbord
+  ===================
+  -->
+
+  <div class="content">
+    <h2 id="dashbord">04. Dashbord </h2>
+    <div class="block-dashbord">
+      <div class="dashbord">
+        <%= link_to admin_artists_path do %>
+        <button class="btn btn--svg dashbord_btn">
+          <svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+            <use xlink:href="#edit-svg"></use>
+          </svg>Artiste
+        </button>
+        <% end %>
+
+        <%= link_to admin_users_path do %>
+        <button class="btn btn--svg dashbord_btn">
+          <svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+            <use xlink:href="#edit-svg"></use>
+          </svg>Users
+        </button>
+        <% end %>
+
+        <%= link_to admin_sounds_path do %>
+        <button class="btn btn--svg dashbord_btn">
+          <svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+            <use xlink:href="#edit-svg"></use>
+          </svg>Sound
+        </button>
+        <% end %>
+
+      <%= link_to admin_albums_path do %>
+        <button class="btn btn--svg dashbord_btn">
+          <svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+            <use xlink:href="#edit-svg"></use>
+          </svg>Album
+        </button>
+          <% end %>
+      </div>
+      <div class="bloc-panels-dashbord">
+        <div class="panels-dashbord">
+          <h2 id="titre-dashbord"> Albums </h2>
+        </div>
+        <div class="playlist">
+          <table class="playlist__media">
+            <tr>
+              <th>Name</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+            <tr>
+              <td>Wageble</td>
+              <td><svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                  <use xlink:href="#edit-svg"></use>
+                </svg></td>
+              <td><svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                  <use xlink:href="#delete_black"></use>
+                </svg></td>
+            </tr>
+            <tr>
+              <td>Dablessed</td>
+              <td><svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                  <use xlink:href="#edit-svg"></use>
+                </svg></td>
+              <td><svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                  <use xlink:href="#delete_black"></use>
+                </svg></td>
+            </tr>
+            <tr>
+              <td>Seksy</td>
+              <td><svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                  <use xlink:href="#edit-svg"></use>
+                </svg></td>
+              <td><svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                  <use xlink:href="#delete_black"></use>
+                </svg></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="progressBarControl__loadingControl" id="progressBarControl__loadingControl">
+      <div class="progressBarControl__loading" id="progressBarControl__loading"> </div>
+    </div>
+    <div class="bloc_close_btn">
+      <button class="btn" id="btn" name="button" type="button">CLOSE</button>
+    </div>
+  </div>
+
+
+</body>
+
+</html>
