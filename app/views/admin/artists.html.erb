@@ -95,33 +95,29 @@
               <th>Edit</th>
               <th>Delete</th>
             </tr>
+            <%= @artists.each do |artist| %>
             <tr>
-              <td>Wageble</td>
-              <td><svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+              <td> <%=artist.name %>    </td>
+
+              <td>
+                <%= link_to(edit_artist_path(artist.id))  do%>
+                 <svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
                   <use xlink:href="#edit-svg"></use>
-                </svg></td>
-              <td><svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                </svg>
+                <% end %>
+              </td>
+
+              <td id="artist-<%= artist.id %>">
+                <%= link_to(artist_path(artist.id),method: :delete, remote: true) do %>
+                <svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
                   <use xlink:href="#delete_black"></use>
-                </svg></td>
+                </svg>
+
+                <% end %>
+              </td>
+
             </tr>
-            <tr>
-              <td>Dablessed</td>
-              <td><svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
-                  <use xlink:href="#edit-svg"></use>
-                </svg></td>
-              <td><svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
-                  <use xlink:href="#delete_black"></use>
-                </svg></td>
-            </tr>
-            <tr>
-              <td>Seksy</td>
-              <td><svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
-                  <use xlink:href="#edit-svg"></use>
-                </svg></td>
-              <td><svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
-                  <use xlink:href="#delete_black"></use>
-                </svg></td>
-            </tr>
+          <% end %>
           </table>
         </div>
       </div>
