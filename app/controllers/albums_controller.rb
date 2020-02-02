@@ -2,6 +2,10 @@
 
 class AlbumsController < ApplicationController
   before_action :set_album, only: %i[show edit update destroy]
+  def edit
+    @songs = Song.all
+    @song_album = @album.songs.build
+  end
 
   def new
     @album = Album.new
