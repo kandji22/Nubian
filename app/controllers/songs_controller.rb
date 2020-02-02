@@ -2,6 +2,10 @@
 
 class SongsController < ApplicationController
   before_action :set_song, only: %i[show edit update destroy]
+  def edit
+    @artists = Artist.all
+    @song_artist = @song.artists.build
+  end
 
   def new
     @song = Song.new
