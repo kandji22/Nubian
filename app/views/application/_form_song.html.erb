@@ -1,0 +1,40 @@
+<%= form_for(song) do |form| %>
+  <% if song.errors.any? %>
+    <%= render partial: 'model_errors', locals: { model: song } %>
+  <% end %>
+<div class="input-group" id="bloc-name">
+  <%= form.label :name, class: 'input-group__label' %>
+    <%= form.text_field :name, class: 'input-group__field', placeholder: 'name song' %>
+</div>
+
+<div class="input-group" id="bloc-name">
+  <%= form.label :title, class: 'input-group__label' %>
+    <%= form.text_field :title, class: 'input-group__field', placeholder: 'title song' %>
+</div>
+
+<div class="input-group" id="bloc-name">
+  <%= form.label :audio_url, class: 'input-group__label' %>
+    <%= form.text_field :audio_url, class: 'input-group__field', placeholder: 'url audio sound' %>
+</div>
+
+<div class="input-group" id="bloc-name">
+  <%= form.label :video_url, class: 'input-group__label' %>
+    <%= form.text_field :video_url, class: 'input-group__field', placeholder: 'url video audio' %>
+</div>
+
+<div class="input-group" id="bloc-name">
+  <%= form.label :body, class: 'input-group__label' %>
+    <%= form.text_area :body, class: 'input-group__field', placeholder: 'comment sound' %>
+</div>
+
+<%= fields_for(song_artist) do |ab| %>
+<div class="input-group" id="bloc-name">
+  <%= ab.label "All Artistes" %><br />
+  <%= collection_select(:artist, :id, artist, :id,  :name, {}, {:multiple => true})%>
+</div>
+<% end %>
+<div class="prompt">
+
+   <%= form.submit class: "btn btn--primary prompt__confirm" %>
+</div>
+<% end %>

@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: %i[new create destroy]
   resources :artists
+  resources :songs
+  resources :albums
 end

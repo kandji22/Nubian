@@ -1,0 +1,54 @@
+# frozen_string_literal: true
+
+class AlbumsController < ApplicationController
+  before_action :set_album, only: %i[show edit update destroy]
+
+  def new
+    @album = Album.new
+    @songs = Song.all
+    @song_album = @album.songs.build
+   end
+
+  def create
+    @album = Album.new(album_params)
+    params[:song][:id].each do |sound|
+      unless sound.empty?
+        sound_trouve = Song.find(sound)
+        @album.songs << sound_trouve
+      end
+    end
+    respond_to do |format|
+      if @album.save
+        # In this format call, the flash message is being passed directly to
+        # redirect_to().  It's a caonvenient way of setting a flash notice or
+        # alert without referencing the flash Hash explicitly.
+        format.html { redirect_to @album, notice: 'album was successfully created.' }
+      else
+        format.html { render :new }
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @album.update(album_params)
+        # In this format call, the flash message is being passed directly to
+        # redirect_to().  It's a caonvenient way of setting a flash notice or
+        # alert without referencing the flash Hash explicitly.
+        format.html { redirect_to @album, notice: 'album was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
+
+  private
+
+  def set_album
+    @album = Album.find(params[:id])
+  end
+
+  def album_params
+    params.require(:album).permit(:name, :title, :body, :photo_album)
+  end
+end
