@@ -1,2 +1,5 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+
+let Song = {}
+Song.RemoveSong = function(idsong) {
+  document.getElementById("song-"+idsong).parentElement.remove()
+};

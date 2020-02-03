@@ -15,6 +15,8 @@ class SongsController < ApplicationController
 
   def create
     @song = Song.new(song_params)
+    album = Album.find(1)
+    @song.album = album
     params[:artist][:id].each do |artiste|
       unless artiste.empty?
         artiste_trouve = Artist.find(artiste)
@@ -36,15 +38,27 @@ class SongsController < ApplicationController
   def update
     respond_to do |format|
       if @song.update(song_params)
-        # In this format call, the flash message is being passed directly to
-        # redirect_to().  It's a caonvenient way of setting a flash notice or
-        # alert without referencing the flash Hash explicitly.
+        @song.artists.delete_all
+        params[:artist][:id].each do |artiste|
+          unless artiste.empty?
+            artiste_trouve = Artist.find(artiste)
+            @song.artists << artiste_trouve
+          end
+        end
+
         format.html { redirect_to @song, notice: 'song was successfully updated.' }
       else
         format.html { render :edit }
       end
     end
   end
+
+  def destroy
+    @song.destroy!
+    respond_to do |format|
+      format.js
+    end
+end
 
   private
 

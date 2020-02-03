@@ -36,15 +36,28 @@ class AlbumsController < ApplicationController
   def update
     respond_to do |format|
       if @album.update(album_params)
-        # In this format call, the flash message is being passed directly to
-        # redirect_to().  It's a caonvenient way of setting a flash notice or
-        # alert without referencing the flash Hash explicitly.
+
+        @album.songs.delete_all
+        params[:song][:id].each do |sound|
+          unless sound.empty?
+            sound_trouve = Song.find(sound)
+            @album.songs << sound_trouve
+          end
+        end
+
         format.html { redirect_to @album, notice: 'album was successfully updated.' }
       else
         format.html { render :edit }
       end
     end
   end
+
+  def destroy
+    @album.destroy!
+    respond_to do |format|
+      format.js
+    end
+end
 
   private
 
