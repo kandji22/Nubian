@@ -1,0 +1,20 @@
+.show {
+
+.bloc-presentation {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  p {
+    color: black;
+  }
+  .card img {
+    height: 40rem;
+    width: 40rem;
+  }
+  h3,span {
+    color: black;
+  }
+}
+}
