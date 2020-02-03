@@ -34,6 +34,13 @@ class AgendasController < ApplicationController
     end
   end
 
+  def destroy
+    @agenda.destroy!
+    respond_to do |format|
+      format.js
+    end
+end
+
   private
 
   def set_agenda

@@ -83,10 +83,24 @@
           </svg>Album
         </button>
           <% end %>
+
+          <%= link_to admin_agendas_path do %>
+            <button class="btn btn--svg dashbord_btn">
+              <svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                <use xlink:href="#edit-svg"></use>
+              </svg>Agenda
+            </button>
+              <% end %>
       </div>
       <div class="bloc-panels-dashbord">
+        <%= link_to(new_artist_path) do %>
         <div class="panels-dashbord">
-          <h2 id="titre-dashbord"> Artiste </h2>
+          <h2 id="titre-dashbord"> Artiste
+            <svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+              <use xlink:href="#add_black"></use>
+            </svg>
+          </h2>
+<% end %>
         </div>
         <div class="playlist">
           <table class="playlist__media">
@@ -112,7 +126,6 @@
                 <svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
                   <use xlink:href="#delete_black"></use>
                 </svg>
-
                 <% end %>
               </td>
 

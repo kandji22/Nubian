@@ -16,4 +16,8 @@ class AdminController < ApplicationController
   def albums
     @albums = Album.all
   end
+
+  def agendas
+    @agendas = Agenda.all
+  end
 end

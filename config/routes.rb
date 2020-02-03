@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     get 'admin/sounds'
     get 'admin/albums'
     get 'admin/users'
+    get 'admin/agendas'
   end
 end

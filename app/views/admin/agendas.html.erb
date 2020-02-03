@@ -83,6 +83,7 @@
           </svg>Album
         </button>
           <% end %>
+
           <%= link_to admin_agendas_path do %>
             <button class="btn btn--svg dashbord_btn">
               <svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
@@ -92,14 +93,17 @@
               <% end %>
       </div>
       <div class="bloc-panels-dashbord">
-        <%= link_to(new_user_path) do %>
+        <%= link_to(new_agenda_path) do %>
         <div class="panels-dashbord">
-          <h2 id="titre-dashbord"> User
+          <h2 id="titre-dashbord"> Agenda
             <svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
               <use xlink:href="#add_black"></use>
             </svg>
           </h2>
 <% end %>
+
+
+
         </div>
         <div class="playlist">
           <table class="playlist__media">
@@ -108,27 +112,25 @@
               <th>Edit</th>
               <th>Delete</th>
             </tr>
-
-            <%= @users.each do |user| %>
+              <%= @agendas.each do |agenda| %>
             <tr>
-              <td> <%=user.name %>     </td>
-
+              <td>  <%=agenda.name %>  </td>
               <td>
-<%= link_to(edit_user_path(user.id))  do%>
+                <%= link_to(edit_album_path(agenda.id))  do%>
                 <svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
                   <use xlink:href="#edit-svg"></use>
                 </svg>
               </td>
-              <% end %>
-              <td id="user-<%= user.id %>">
-                <%= link_to(user_path(user.id),method: :delete, remote: true) do %>
+                <% end %>
+              <td id="agenda-<%= agenda.id %>">
+                <%= link_to(agenda_path(agenda.id),method: :delete, remote: true) do %>
                 <svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
                   <use xlink:href="#delete_black"></use>
                 </svg>
-                  <% end %>
+                <% end %>
               </td>
             </tr>
-          <% end %>
+              <% end %>
           </table>
         </div>
       </div>
