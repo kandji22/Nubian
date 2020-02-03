@@ -59,6 +59,10 @@ class AlbumsController < ApplicationController
     end
 end
 
+  def index
+    @album = Album.all
+  end
+
   private
 
   def set_album

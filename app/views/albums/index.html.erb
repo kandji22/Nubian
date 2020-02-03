@@ -52,8 +52,8 @@
            <% end %>
         </div>
         <ul class="main-navigation">
-          <li> <a href="latest.html" class="active">LATEST </a></li>
-          <li> <a href="album.html">RELEASE </a></li>
+          <li> <a href="latest.html">LATEST </a></li>
+          <li> <a href="album.html" class="active">RELEASE </a></li>
           <li> <a href="infoartiste.html">ARTISTE </a></li>
           <li> <a href="event.html">EVENT </a></li>
           <li> <a href="whish.html">WHICH LIST </a></li>
@@ -76,37 +76,25 @@
 
       <!--
     ===================
-    =========== list most recent sound
+    =========== Album
     ===================
     -->
-      <h1> Most Recent Sound </h1>
+      <h1> All Albums </h1>
       <hr>
 
       <div class="card-presentation" id="card-presentation">
-        <% @song.each  do |song| %>
+        <% @album.each  do |album| %>
         <div class="info-and-card ">
           <div class="info">
-            <h3 class=""> <%= song.title %> </h3>
-            <span class=""><%= song.name %> </span>
+            <h3 class=""> <%= album.title %> </h3>
+            <span class=""><%= album.name %> </span>
           </div>
           <div class="card">
-          <%= image_tag(song.photo_song,alt: "image card presentation")  %>
+          <%= image_tag(album.photo_album,alt: "image card presentation")  %>
           </div>
         </div>
           <% end %>
 
-        <!--
-      ===================
-      =========== list most recent video
-      ===================
-      -->
-      </div>
-      <h1> Most Recent Video </h1>
-      <hr>
-      <div class="video-artite">
-        <% @song.each  do |song| %>
-        <%=song.video_url.html_safe %>
-    <% end %>
 
       </div>
 
@@ -116,6 +104,8 @@
     ===================
     -->
     </div>
+
+
 
   </body>
 
