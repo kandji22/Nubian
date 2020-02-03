@@ -1,0 +1,12 @@
+<body class="show">
+<header>
+  <nav>
+    <ul class="main__admin">
+      <li> <a href="#"> Log Out </a> </li>
+      <li> <%= link_to('Dashbord',admin_artists_path)  %> </li>
+    </ul>
+  </nav>
+</header>
+
+<%= render partial: 'card_create_artist', locals: { artist: @artist } %>
+</body>

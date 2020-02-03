@@ -1,0 +1,71 @@
+<body>
+
+  <!--
+===================
+=========== block header
+===================
+-->
+  <header>
+
+    <!--
+  ===================
+  =========== block navigation bar telephone/tablet
+  ===================
+  -->
+    <nav class="navebar-tel-tab">
+      <label class="label-chk" for="chk">&#9776;</label>
+      <input type="checkbox" class="chk" name="chk" id="chk">
+      <ul class="navebar-tel-tab--navigation">
+        <li> <a href="latest.html">LATEST </a></li>
+        <li> <a href="album.html">RELEASE </a></li>
+        <li> <a href="infoartiste.html" class="active">ARTISTE </a></li>
+        <li> <a href="event.html">EVENT </a></li>
+        <li> <a href="whish.html">WHICH LIST </a></li>
+      </ul>
+    </nav>
+
+    <!--
+  ===================
+  =========== block navigation bar laptop
+  ===================
+  -->
+    <nav class="navebar_presentation">
+      <div class="bloc_logo">
+        <%= link_to(root_path) do %>
+          <%= image_tag("logo.svg",class: "logo", alt: "logo nubian") %>
+         <% end %>
+      </div>
+      <ul class="main-navigation">
+        <li> <a href="latest.html">LATEST </a></li>
+        <li> <a href="album.html">RELEASE </a></li>
+        <li> <a href="infoartiste.html" class="active">ARTISTE </a></li>
+        <li> <a href="event.html">EVENT </a></li>
+        <li> <a href="whish.html">WHICH LIST </a></li>
+      </ul>
+      <div class="search-bar">
+        <input type="text" class="search-bar__input" name="search-bar__input" placeholder="Search Album">
+        <button class="btn btn--primary btn--search">
+          SEARCH
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!--
+===================
+=========== list artistes
+===================
+-->
+  <h1 class="number_artise"> Number Artiste (<%= @artists.length %>)</h1>
+  <div class="bloc_menu" id="bloc_menu">
+    <ul class="menu_artiste">
+      <% @artists.each  do |artist| %>
+      <li> <a href="artiste.html" class="name_artiste"><%=  artist.name %></a></li>
+      <% end %>
+    </ul>
+  </div>
+
+
+</body>
+
+</html>

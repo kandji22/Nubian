@@ -20,4 +20,20 @@ class AdminController < ApplicationController
   def agendas
     @agendas = Agenda.all
   end
+
+  def showalbum
+    @album = Album.find(params[:ie])
+  end
+
+  def showartist
+    @artist = Artist.find(params[:ie])
+  end
+
+  def showsong
+    @song = Song.find(params[:ie])
+  end
+
+  def showuser
+    @user = User.find(params[:ie])
+  end
 end

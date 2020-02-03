@@ -14,5 +14,11 @@ Rails.application.routes.draw do
     get 'admin/albums'
     get 'admin/users'
     get 'admin/agendas'
+    scope ':ie' do
+      get 'admin/showartist'
+      get 'admin/showsong'
+      get 'admin/showalbum'
+      get 'admin/showuser'
+    end
   end
 end

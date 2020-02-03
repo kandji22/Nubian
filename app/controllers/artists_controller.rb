@@ -14,7 +14,7 @@ class ArtistsController < ApplicationController
         # In this format call, the flash message is being passed directly to
         # redirect_to().  It's a caonvenient way of setting a flash notice or
         # alert without referencing the flash Hash explicitly.
-        format.html { redirect_to @artist, notice: 'Artist was successfully created.' }
+        format.html { redirect_to admin_showartist_path(@artist), notice: 'Artist was successfully created.' }
       else
         format.html { render :new }
       end
@@ -42,6 +42,10 @@ class ArtistsController < ApplicationController
 end
 
   def show; end
+
+  def index
+    @artists = Artist.all
+  end
 
   private
 
