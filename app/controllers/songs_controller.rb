@@ -60,6 +60,10 @@ class SongsController < ApplicationController
     end
 end
 
+  def index
+    @song = Song.most_recent
+   end
+
   private
 
   def set_song

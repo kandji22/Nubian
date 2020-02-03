@@ -1,0 +1,107 @@
+<body>
+
+  <!--
+===================
+=========== block header
+===================
+-->
+  <header>
+
+    <!--
+  ===================
+  =========== block navigation bar telephone/tablet
+  ===================
+  -->
+    <nav class="navebar-tel-tab">
+      <label class="label-chk" for="chk">&#9776;</label>
+      <input type="checkbox" class="chk" name="chk" id="chk">
+      <ul class="navebar-tel-tab--navigation">
+        <li> <a href="latest.html" class="active">LATEST </a></li>
+        <li> <a href="album.html">RELEASE </a></li>
+        <li> <a href="infoartiste.html">ARTIST </a></li>
+        <li> <a href="event.html">EVENT </a></li>
+        <li> <a href="whish.html">WHICH LIST </a></li>
+      </ul>
+    </nav>
+
+    <!--
+  ===================
+  =========== block navigation bar laptop
+  ===================
+  -->
+    <nav class="navebar_presentation">
+      <div class="bloc_logo">
+        <%= link_to(root_path) do %>
+          <%= image_tag("logo.svg",class: "logo", alt: "logo nubian") %>
+         <% end %>
+      </div>
+      <ul class="main-navigation">
+        <li> <a href="latest.html" class="active">LATEST </a></li>
+        <li> <a href="album.html">RELEASE </a></li>
+        <li> <a href="infoartiste.html">ARTISTE </a></li>
+        <li> <a href="event.html">EVENT </a></li>
+        <li> <a href="whish.html">WHICH LIST </a></li>
+      </ul>
+      <div class="search-bar">
+        <input type="text" class="search-bar__input" name="search-bar__input" placeholder="Search Album">
+        <button class="btn btn--primary btn--search">
+          SEARCH
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!--
+===================
+=========== block content for border left and right
+===================
+-->
+  <div class="content" id="content">
+
+    <!--
+  ===================
+  =========== list most recent sound
+  ===================
+  -->
+    <h1> Most Recent Sound </h1>
+    <hr>
+    <% @song.each  do |song| %>
+    <div class="card-presentation" id="card-presentation">
+      <div class="info-and-card reveal">
+        <div class="info">
+          <h3 class=""> <%= song.title %> </h3>
+          <span class=""><%= song.name %> </span>
+        </div>
+        <div class="card">
+
+          <%= image_tag(song.photo_song,alt: "image card presentation")  %>
+        </div>
+      </div>
+      <% end %>
+
+
+      <!--
+    ===================
+    =========== list most recent video
+    ===================
+    -->
+    </div>
+    <h1> Most Recent Video </h1>
+    <hr>
+    <% @song.each  do |song| %>
+    <div class="video-artite">
+    <%=song.video_url.html_safe %>
+
+    </div>
+<% end %>
+    <!--
+  ===================
+  =========== end div content
+  ===================
+  -->
+  </div>
+
+
+</body>
+
+</html>
