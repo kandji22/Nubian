@@ -67,6 +67,6 @@ end
   end
 
   def song_params
-    params.require(:song).permit(:name, :title, :audio_url, :video_url, :body)
+    params.require(:song).permit(:name, :title, :audio_url, :video_url, :body, :photo_song)
   end
 end

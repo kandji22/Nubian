@@ -27,6 +27,12 @@
     <%= form.text_area :body, class: 'input-group__field', placeholder: 'comment sound' %>
 </div>
 
+<div class="input-group" id="bloc-file">
+
+  <%= form.label :photo_song, class: 'input-group__label' %>
+  <%= form.file_field :photo_song, class: "input-group__field" %>
+</div>
+
 <%= fields_for(song_artist) do |ab| %>
 <div class="input-group" id="bloc-name">
   <%= ab.label "All Artistes" %><br />

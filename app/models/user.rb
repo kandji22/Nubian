@@ -14,4 +14,5 @@ class User < ApplicationRecord
   def default_role
     self.role ||= 'registered'
   end
+  mount_uploader :profil_img, ProfilImgUploader
 end

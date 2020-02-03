@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200202105237) do
+ActiveRecord::Schema.define(version: 20200203131720) do
 
   create_table "agendas", force: :cascade do |t|
     t.string "name"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20200202105237) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
-    t.string "photo"
+    t.string "photo_artist"
     t.string "bibliographie"
     t.string "url_facebook"
     t.string "url_instagram"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20200202105237) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "album_id"
+    t.string "photo_song"
     t.index ["album_id"], name: "index_songs_on_album_id"
   end
 

@@ -1,0 +1,6 @@
+admin = User.create!(mail: 'kandji.k66@gmail.com', name: 'kandji', password: 'kandji', role: 'admin')
+registered = User.create!(mail: 'modou.k66@gmail.com', name: 'modou', password: 'modou', role: 'registered')
+
+song1 = Song.create!(title: 'be the best',
+                   body: 'Using Class.name returns a String representing the name of a class!  E.g. Integer.name returns "Integer" and ApplicationController.name returns "ApplicationController"',
+                   )
