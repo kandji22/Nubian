@@ -36,8 +36,8 @@
   <header>
     <nav>
       <ul class="main__admin">
-        <li> <a href="#"> Log Out </a> </li>
-        <li> <a href="#"> View Modification </a> </li>
+        <li> <a href="#"> LOG OUT </a> </li>
+        <li> <%= link_to("VIEW MODIFICATION",agendas_path) %> </li>
       </ul>
     </nav>
   </header>
@@ -116,7 +116,7 @@
             <tr>
               <td>  <%=agenda.name %>  </td>
               <td>
-                <%= link_to(edit_album_path(agenda.id))  do%>
+                <%= link_to(edit_agenda_path(agenda.id))  do%>
                 <svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
                   <use xlink:href="#edit-svg"></use>
                 </svg>

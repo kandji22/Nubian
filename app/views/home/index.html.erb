@@ -25,8 +25,7 @@
         <label class="label-chk" for="chk"> &#9776; </label>
         <input class="chk" id="chk" name="chk" type="checkbox">
         <ul class="navebar-tel-tab--navigation">
-
-          <li> <a href="album.html" class="active"> LATEST </a> </li>
+          <li> <%= link_to("LATEST",songs_path) %> </li>
         </ul>
       </nav>
 
@@ -43,7 +42,7 @@
           </div>
           <ul class="main-navigation">
             <li class="main-navigation__li"> <%= link_to("LOG IN",new_user_path)  %> </li>
-            <li class="main-navigation__li"> <a href="latest.html">LATEST </a></li>
+            <li class="main-navigation__li"> <%= link_to("LATEST",songs_path) %> </li>
           </ul>
         </div>
       </nav>

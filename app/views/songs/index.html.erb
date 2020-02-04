@@ -32,10 +32,10 @@
         <label class="label-chk" for="chk">&#9776;</label>
         <input type="checkbox" class="chk" name="chk" id="chk">
         <ul class="navebar-tel-tab--navigation">
-          <li> <a href="latest.html" class="active">LATEST </a></li>
-          <li> <a href="album.html">RELEASE </a></li>
-          <li> <a href="infoartiste.html">ARTIST </a></li>
-          <li> <a href="event.html">EVENT </a></li>
+          <li> <%= link_to("LATEST",songs_path,class: "active") %> </li>
+          <li> <%= link_to("RELEASE",albums_path) %> </li>
+          <li> <%= link_to("ARTISTE",artists_path) %></li>
+          <li> <%= link_to("EVENT",agendas_path) %> </li>
           <li> <a href="whish.html">WHICH LIST </a></li>
         </ul>
       </nav>
@@ -52,10 +52,10 @@
            <% end %>
         </div>
         <ul class="main-navigation">
-          <li> <a href="latest.html" class="active">LATEST </a></li>
-          <li> <a href="album.html">RELEASE </a></li>
-          <li> <a href="infoartiste.html">ARTISTE </a></li>
-          <li> <a href="event.html">EVENT </a></li>
+          <li> <%= link_to("LATEST",songs_path,class: "active") %> </li>
+          <li> <%= link_to("RELEASE",albums_path) %> </li>
+          <li> <%= link_to("ARTISTE",artists_path) %></li>
+          <li> <%= link_to("EVENT",agendas_path) %> </li>
           <li> <a href="whish.html">WHICH LIST </a></li>
         </ul>
         <div class="search-bar">
