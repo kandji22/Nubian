@@ -27,6 +27,14 @@
   <%= form.label :photo_artist, class: 'input-group__label' %>
   <%= form.file_field :photo_artist, class: "input-group__field" ,id: "img_profil" %>
 </div>
+
+<%= fields_for(artist_songs) do |ab| %>
+<div class="input-group" id="bloc-name">
+  <%= ab.label "All Songs" %><br />
+  <%= collection_select(:song, :id, song, :id,  :name, {}, {:multiple => true})%>
+</div>
+<% end %>
+
 <div class="prompt">
 
    <%= form.submit class: "btn btn--primary prompt__confirm" %>

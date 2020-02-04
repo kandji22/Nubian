@@ -29,7 +29,7 @@
       <div class="text--center">
         <h1 class="gamma">New Artist</h1>
       </div>
-        <%=render(partial: "form_artist", locals: { artist: @artist})  %>
+        <%=render(partial: "form_artist", locals: { artist: @artist,song: @songs,artist_songs: @artist_songs})  %>
 
     </section>
   </main>

@@ -2,13 +2,27 @@
 
 class ArtistsController < ApplicationController
   before_action :set_artist, only: %i[show edit update destroy]
+  def edit
+    @songs = Song.all
+    @artist_songs = @artist.songs.build
+  end
 
   def new
     @artist = Artist.new
+    @songs = Song.all
+    @artist_songs = @artist.songs.build
    end
 
   def create
     @artist = Artist.new(artist_params)
+
+    params[:song][:id].each do |sound|
+      unless sound.empty?
+        sound_trouve = Song.find(sound)
+        @artist.songs << sound_trouve
+      end
+    end
+
     respond_to do |format|
       if @artist.save
         # In this format call, the flash message is being passed directly to
@@ -24,9 +38,14 @@ class ArtistsController < ApplicationController
   def update
     respond_to do |format|
       if @artist.update(artist_params)
-        # In this format call, the flash message is being passed directly to
-        # redirect_to().  It's a caonvenient way of setting a flash notice or
-        # alert without referencing the flash Hash explicitly.
+        @artist.songs.delete_all
+        params[:song][:id].each do |sound|
+          unless sound.empty?
+            sound_trouve = Song.find(sound)
+            @artist.songs << sound_trouve
+          end
+        end
+
         format.html { redirect_to @artist, notice: 'Artist was successfully updated.' }
       else
         format.html { render :edit }
@@ -41,7 +60,9 @@ class ArtistsController < ApplicationController
     end
 end
 
-  def show; end
+  def show
+    @songs = @artist.songs
+   end
 
   def index
     @artists = Artist.all
