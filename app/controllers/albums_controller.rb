@@ -63,6 +63,10 @@ end
     @album = Album.all
   end
 
+  def show
+    @songs = @album.songs
+  end
+
   private
 
   def set_album

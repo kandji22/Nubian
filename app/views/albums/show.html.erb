@@ -1,12 +1,143 @@
-<body class="show">
-<header>
-  <nav>
-    <ul class="main__admin">
-      <li> <a href="#"> Log Out </a> </li>
-      <li> <a href="#"> Dashbord </a> </li>
-    </ul>
-  </nav>
-</header>
+<body>
 
-<%= render partial: 'card_create_album', locals: { album: @album } %>
+  <!--
+  ===================
+  =========== svg icon
+  ===================
+  -->
+  <svg style="display:none;">
+    <defs>
+      <symbol id="add_black">
+        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+        <path d="M0 0h24v24H0z" fill="none" />
+      </symbol>
+      <symbol id="delete_black">
+        <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
+        <path d="M0 0h24v24H0z" fill="none" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <!--
+  ===================
+  =========== bloc header document
+  ===================
+  -->
+  <header>
+
+    <!--
+    ===================
+    =========== navigation bar for telephone/tablet
+    ===================
+    -->
+    <nav class="navebar-tel-tab">
+      <label class="label-chk" for="chk">&#9776;</label>
+      <input type="checkbox" class="chk" name="chk" id="chk">
+      <ul class="navebar-tel-tab--navigation">
+        <li> <a href="latest.html">LATEST </a></li>
+        <li> <a href="album.html">RELEASE </a></li>
+        <li> <a href="infoartiste.html">Artiste </a></li>
+        <li> <a href="event.html">EVENT </a></li>
+        <li> <a href="whish.html">WHICH LIST </a></li>
+      </ul>
+    </nav>
+
+    <!--
+    ===================
+    =========== bloc navigation bar for laptop
+    ===================
+    -->
+    <nav class="navebar">
+        <%= image_tag(@album.photo_album, class: "image_background", alt: "image background" ) %>
+      <div class="navebar__absolute">
+        <div class="bloc_logo">
+          <a href="acceuil.html">
+            <%= image_tag("logo.svg", class: "logo", alt: "logo nubian") %>
+           </a>
+        </div>
+        <ul class="main-navigation">
+          <li> <a href="latest.html">LATEST </a></li>
+          <li> <a href="album.html">RELEASE </a></li>
+          <li> <a href="infoartiste.html">Artiste </a></li>
+
+          <li> <a href="event.html">EVENT </a></li>
+          <li> <a href="whish.html">WHICH LIST </a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!--
+  ===================
+  =========== bloc content for to make border left and right
+  ===================
+  -->
+  <div class="content">
+
+    
+
+    <!--
+      ===================
+      ===========  Track
+      ===================
+      -->
+    <h1 id="track"> Tracks </h1>
+    <div class="track ">
+      <div class="track-card">
+        <div class="track-card--image">
+          <%= image_tag(@album.photo_album, alt: "image goal" ) %>
+        </div>
+        <div class="card-button">
+          <button class="btn btn--svg">
+            <svg fill="#bbc1c6" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+              <use xlink:href="#add_black"></use>
+            </svg>ADD BUTTON
+          </button>
+        </div>
+      </div>
+      <div class="playlist">
+        <table class="playlist__media">
+          <tr>
+            <th>#</th>
+            <td class="playlist__piste">Play</td>
+            <th>Track</th>
+          </tr>
+          <% @songs.each do |song|  %>
+          <tr class="playlist__media--line">
+            <td class="playlist__piste">N1 piste</td>
+            <td class="playlist__piste"><button onclick="play('sound1', this)">Play</button></td>
+            <th class="playlist__name_music"><%= song.name  %></th>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+
+    <!--
+      ===================
+      ===========  video artiste
+      ===================
+      -->
+    <h1> Video </h1>
+    <hr>
+    <div class="video-artite">
+      <% @songs.each do |song|  %>
+      <% if song.video_url.present? %>
+      <%= song.video_url.html_safe  %>
+      <% end %>
+      <% end %>
+    </div>
+
+
+
+    <!-- ===================
+            ===========  end content
+            ===================
+            -->
+  </div>
+
+
+
 </body>
+
+</html>

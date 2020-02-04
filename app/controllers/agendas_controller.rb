@@ -41,6 +41,10 @@ class AgendasController < ApplicationController
     end
 end
 
+  def index
+    @agendas = Agenda.most_recent
+  end
+
   private
 
   def set_agenda
