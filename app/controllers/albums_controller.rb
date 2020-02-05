@@ -2,6 +2,8 @@
 
 class AlbumsController < ApplicationController
   before_action :set_album, only: %i[show edit update destroy]
+  before_action :ensure_authenticated, only: %i[edit new create update destroy]
+  before_action :ensure_admin?, only: %i[edit new create update destroy]
   def edit
     @songs = Song.all
     @song_album = @album.songs.build

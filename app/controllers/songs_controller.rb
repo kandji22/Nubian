@@ -2,6 +2,8 @@
 
 class SongsController < ApplicationController
   before_action :set_song, only: %i[show edit update destroy]
+  before_action :ensure_authenticated, only: %i[edit new create update destroy]
+  before_action :ensure_admin?, only: %i[edit new create update destroy]
   def edit
     @artists = Artist.all
     @song_artist = @song.artists.build

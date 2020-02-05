@@ -3,33 +3,33 @@
     <%= render partial: 'model_errors', locals: { model: song } %>
   <% end %>
 <div class="input-group" id="bloc-name">
-  <%= form.label :name, class: 'input-group__label' %>
+  <%= form.label :Name, class: 'input-group__label' %>
     <%= form.text_field :name, class: 'input-group__field', placeholder: 'name song' %>
 </div>
 
 <div class="input-group" id="bloc-name">
-  <%= form.label :title, class: 'input-group__label' %>
+  <%= form.label :Title, class: 'input-group__label' %>
     <%= form.text_field :title, class: 'input-group__field', placeholder: 'title song' %>
 </div>
 
 <div class="input-group" id="bloc-name">
-  <%= form.label :audio_url, class: 'input-group__label' %>
+  <%= form.label :Audio_url, class: 'input-group__label' %>
     <%= form.text_field :audio_url, class: 'input-group__field', placeholder: 'url audio sound' %>
 </div>
 
 <div class="input-group" id="bloc-name">
-  <%= form.label :video_url, class: 'input-group__label' %>
+  <%= form.label :Video_url, class: 'input-group__label' %>
     <%= form.text_field :video_url, class: 'input-group__field', placeholder: 'url video audio' %>
 </div>
 
 <div class="input-group" id="bloc-name">
-  <%= form.label :body, class: 'input-group__label' %>
+  <%= form.label :Comment, class: 'input-group__label' %>
     <%= form.text_area :body, class: 'input-group__field', placeholder: 'comment sound' %>
 </div>
 
 <div class="input-group" id="bloc-file">
 
-  <%= form.label :photo_song, class: 'input-group__label' %>
+  <%= form.label :Photo, class: 'input-group__label' %>
   <%= form.file_field :photo_song, class: "input-group__field" %>
 </div>
 

@@ -34,11 +34,13 @@
       <label class="label-chk" for="chk">&#9776;</label>
       <input type="checkbox" class="chk" name="chk" id="chk">
       <ul class="navebar-tel-tab--navigation">
-        <li> <%= link_to("LATEST",songs_path) %> </li>
-        <li> <%= link_to("RELEASE",albums_path) %> </li>
-        <li> <%= link_to("ARTISTE",artists_path,class: "active") %></li>
-        <li> <%= link_to("EVENT",agendas_path) %> </li>
-        <li> <a href="whish.html">WHICH LIST </a></li>
+        <li> <%= link_to(translate("latest"),songs_path) %> </li>
+        <li> <%= link_to(translate("release"),albums_path) %> </li>
+        <li> <%= link_to(translate("artist"),artists_path,class: "active") %></li>
+        <li> <%= link_to(translate("event"),agendas_path) %> </li>
+        <% if onlyadmincanedit?  %>
+        <li> <%= link_to("admin", admin_artists_path) %> </li>
+        <% end %>
       </ul>
     </nav>
 
@@ -56,10 +58,13 @@
            </a>
         </div>
         <ul class="main-navigation">
-          <li> <%= link_to("LATEST",songs_path) %> </li>
-          <li> <%= link_to("RELEASE",albums_path) %> </li>
-          <li> <%= link_to("ARTISTE",artists_path,class: "active") %></li>
-          <li> <%= link_to("EVENT",agendas_path) %> </li>
+          <li> <%= link_to(translate("latest"),songs_path) %> </li>
+          <li> <%= link_to(translate("release"),albums_path) %> </li>
+          <li> <%= link_to(translate("artist"),artists_path,class: "active") %></li>
+          <li> <%= link_to(translate("event"),agendas_path) %> </li>
+          <% if onlyadmincanedit?  %>
+          <li> <%= link_to("admin", admin_artists_path) %> </li>
+          <% end %>
           <li> <a href="whish.html">WHICH LIST </a></li>
         </ul>
       </div>
@@ -78,7 +83,7 @@
     =========== biographie artiste
     ===================
     -->
-    <h1> Biographie </h1>
+    <h1> Biography </h1>
     <hr>
     <div class="description__artiste">
 
@@ -207,6 +212,36 @@
       <button class="btn" id="btn" type="button" name="button">CLOSE</button>
     </div>
   </div>
+
+
+  <!--
+  ===================
+  ===========
+bloc footer
+  ===================
+  -->
+  <footer class="footer footer--artist">
+
+    <ul class="footer__main">
+      <li> <a href="#">
+          <h3>Social Networks </h3>
+        </a>
+      </li>
+      <li> <a href="#">facebook </a> </li>
+      <li> <a href="#"> instagramme </a> </li>
+      <li> <a href="#">autres </a> </li>
+    </ul>
+
+    <ul class="footer__main">
+      <li> <h3> Language </h3></li>
+      <li>
+      <% I18n.available_locales.each do |locale| %>
+        <%= link_to(locale,url_for(locale: locale),class:"nav-link") %>
+      <% end %>
+</li>
+    </ul>
+
+  </footer>
 
 
 </body>

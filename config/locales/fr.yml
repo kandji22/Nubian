@@ -1,0 +1,33 @@
+
+fr:
+  viewmodification: 'REGARDER LES MODIFICATION'
+  logout: 'Se Deconnecter'
+  login: 'Se Connecter'
+  signup: 'Creer Compte'
+  search:  "Recherche"
+  latest:  "NOUVEAUTE"
+  release: "ALBUM"
+  artist: "ARTISTE"
+  event: "EVENEMENT"
+  home: "ACCEUIL"
+  recentsound: "Musique Plus Recent"
+  recentvideo: "Video Plus Recent"
+  allalbum: "Tous les Albums"
+  nbrartiste: "Nombre D' Artiste"
+  allevent: "TOUS LES EVENEMENTS"
+  searchalbum: "Rechercher un Album"
+  biography: "Biographie"
+  tracks: "pistes"
+  comment: "Commentaire"
+  addcomment: "Ajouter Commentaire"
+  socialnetwork: "Reseaux Sociaux"
+  cordinate: "Coordonner"
+  language: "Language"
+  helpers:
+    label:
+      user:
+        name: "Nom"
+        mail: "Email"
+        password: "Mot de passe"
+        password2: "Confirmer le mot de passe"
+        profil_img: "Profil"

@@ -2,6 +2,8 @@
 
 class AgendasController < ApplicationController
   before_action :set_agenda, only: %i[show edit update destroy]
+  before_action :ensure_authenticated, only: %i[edit new create update destroy]
+  before_action :ensure_admin?, only: %i[edit new create update destroy]
 
   def new
     @agenda = Agenda.new

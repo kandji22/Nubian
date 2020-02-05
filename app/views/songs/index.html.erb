@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
 
-  <head>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,300,400,500,700,700i,900&display=swap" rel="stylesheet">
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/style.css">
-    <title> Nubian Spirit</title>
-  </head>
 
   <!--
 ===================
@@ -32,11 +24,13 @@
         <label class="label-chk" for="chk">&#9776;</label>
         <input type="checkbox" class="chk" name="chk" id="chk">
         <ul class="navebar-tel-tab--navigation">
-          <li> <%= link_to("LATEST",songs_path,class: "active") %> </li>
-          <li> <%= link_to("RELEASE",albums_path) %> </li>
-          <li> <%= link_to("ARTISTE",artists_path) %></li>
-          <li> <%= link_to("EVENT",agendas_path) %> </li>
-          <li> <a href="whish.html">WHICH LIST </a></li>
+          <li> <%= link_to(translate("latest"),songs_path,class: "active") %> </li>
+          <li> <%= link_to(translate("release"),albums_path) %> </li>
+          <li> <%= link_to(translate("artist"),artists_path) %></li>
+          <li> <%= link_to(translate("event"),agendas_path) %> </li>
+          <% if onlyadmincanedit?  %>
+          <li> <%= link_to("admin", admin_artists_path) %> </li>
+          <% end %>
         </ul>
       </nav>
 
@@ -52,11 +46,13 @@
            <% end %>
         </div>
         <ul class="main-navigation">
-          <li> <%= link_to("LATEST",songs_path,class: "active") %> </li>
-          <li> <%= link_to("RELEASE",albums_path) %> </li>
-          <li> <%= link_to("ARTISTE",artists_path) %></li>
-          <li> <%= link_to("EVENT",agendas_path) %> </li>
-          <li> <a href="whish.html">WHICH LIST </a></li>
+          <li> <%= link_to(translate("latest"),songs_path,class: "active") %> </li>
+          <li> <%= link_to(translate("release"),albums_path) %> </li>
+          <li> <%= link_to(translate("artist"),artists_path) %></li>
+          <li> <%= link_to(translate("event"),agendas_path) %> </li>
+          <% if onlyadmincanedit?  %>
+          <li> <%= link_to("admin", admin_artists_path) %> </li>
+          <% end %>
         </ul>
         <div class="search-bar">
           <input type="text" class="search-bar__input" name="search-bar__input" placeholder="Search Album">
@@ -79,7 +75,7 @@
     =========== list most recent sound
     ===================
     -->
-      <h1> Most Recent Sound </h1>
+      <h1> <%=translate("recentsound")%> </h1>
       <hr>
 
       <div class="card-presentation" id="card-presentation">
@@ -101,7 +97,7 @@
       ===================
       -->
       </div>
-      <h1> Most Recent Video </h1>
+      <h1> <%=translate("recentvideo")%> </h1>
       <hr>
       <div class="video-artite">
         <% @song.each  do |song| %>

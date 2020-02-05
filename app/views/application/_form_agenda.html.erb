@@ -3,18 +3,18 @@
     <%= render partial: 'model_errors', locals: { model: agenda } %>
   <% end %>
 <div class="input-group" id="bloc-name">
-  <%= form.label :name, class: 'input-group__label' %>
+  <%= form.label :Name, class: 'input-group__label' %>
     <%= form.text_field :name, class: 'input-group__field', placeholder: 'your name', id: "name" %>
 </div>
 <div class="input-group" id="bloc-email">
 
-  <%= form.label :lieu, class: 'input-group__label' %>
+  <%= form.label :Location, class: 'input-group__label' %>
 
   <%= form.text_field :lieu, class: 'input-group__field', placeholder: "lieu evenement" %>
 </div>
 <div class="input-group" id="bloc-email">
 
-  <%= form.label :date, class: 'input-group__label' %>
+  <%= form.label :Dated, class: 'input-group__label' %>
 
   <%= form.date_field :date, class: 'input-group__field', placeholder: "date evenement like 01/01/2014" %>
 </div>

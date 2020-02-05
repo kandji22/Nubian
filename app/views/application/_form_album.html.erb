@@ -3,23 +3,23 @@
     <%= render partial: 'model_errors', locals: { model: album } %>
   <% end %>
 <div class="input-group" id="bloc-name">
-  <%= form.label :name, class: 'input-group__label' %>
+  <%= form.label :Name, class: 'input-group__label' %>
     <%= form.text_field :name, class: 'input-group__field', placeholder: 'name album' %>
 </div>
 
 <div class="input-group" id="bloc-name">
-  <%= form.label :title, class: 'input-group__label' %>
+  <%= form.label :Title, class: 'input-group__label' %>
     <%= form.text_field :title, class: 'input-group__field', placeholder: 'title album' %>
 </div>
 
 <div class="input-group" id="bloc-name">
-  <%= form.label :body, class: 'input-group__label' %>
+  <%= form.label :Comment, class: 'input-group__label' %>
     <%= form.text_area :body, class: 'input-group__field', placeholder: 'comment album' %>
 </div>
 
 <div class="input-group" id="bloc-file">
 
-  <%= form.label :photo_album, class: 'input-group__label' %>
+  <%= form.label :Photo, class: 'input-group__label' %>
   <%= form.file_field :photo_album, class: "input-group__field" ,id: "img_profil" %>
 </div>
 

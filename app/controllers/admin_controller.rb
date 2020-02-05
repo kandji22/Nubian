@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AdminController < ApplicationController
+  before_action :ensure_authenticated
+  before_action :ensure_admin?
   def artists
     @artists = Artist.all
   end

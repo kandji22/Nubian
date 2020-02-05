@@ -3,28 +3,28 @@
     <%= render partial: 'model_errors', locals: { model: artist } %>
   <% end %>
 <div class="input-group" id="bloc-name">
-  <%= form.label :name, class: 'input-group__label' %>
+  <%= form.label :Name, class: 'input-group__label' %>
     <%= form.text_field :name, class: 'input-group__field', placeholder: 'name artist', id: "name" %>
 </div>
 
 <div class="input-group" id="bloc-name">
-  <%= form.label :bibliographie, class: 'input-group__label' %>
+  <%= form.label :Bibliographie, class: 'input-group__label' %>
     <%= form.text_area :bibliographie, class: 'input-group__field', placeholder: 'bibliographie', id: "name" %>
 </div>
 
 <div class="input-group" id="bloc-name">
-  <%= form.label :url_facebook, class: 'input-group__label' %>
+  <%= form.label :Url_facebook, class: 'input-group__label' %>
     <%= form.text_field :url_facebook, class: 'input-group__field', placeholder: 'http/:...' %>
 </div>
 
 <div class="input-group" id="bloc-name">
-  <%= form.label :url_instagram, class: 'input-group__label' %>
+  <%= form.label :Url_instagram, class: 'input-group__label' %>
     <%= form.text_field :url_instagram, class: 'input-group__field', placeholder: 'http/:...' %>
 </div>
 
 <div class="input-group" id="bloc-file">
 
-  <%= form.label :photo_artist, class: 'input-group__label' %>
+  <%= form.label :Photo, class: 'input-group__label' %>
   <%= form.file_field :photo_artist, class: "input-group__field" ,id: "img_profil" %>
 </div>
 
