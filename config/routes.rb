@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   scope '/:locale' do
     resources :users
     resources :sessions, only: %i[new create destroy]
-    resources :artists
+    resources :artists do
+      resources :comments, only: [:create]
+    end
     resources :songs
     resources :albums
     resources :agendas

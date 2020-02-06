@@ -1,0 +1,34 @@
+<!--
+===================
+===========
+bloc footer
+===================
+-->
+<footer class="footer footer--artist">
+
+  <ul class="footer__main">
+    <li> <a href="#">
+        <h3>Social Networks </h3>
+      </a>
+    </li>
+    <li> <%= link_to("https://www.facebook.com/nubianspirit/") do %>
+        facebook
+      <% end %>
+     </li>
+     <li> <%= link_to("https://www.instagram.com/nubianspiritmusic/") do %>
+         instagramme
+       <% end %>
+      </li>
+    <li> <a href="#">autres </a> </li>
+  </ul>
+
+  <ul class="footer__main">
+    <li> <h3> Language </h3></li>
+    <li>
+    <% I18n.available_locales.each do |locale| %>
+      <%= link_to(locale,url_for(locale: locale),class:"nav-link") %> <br>
+    <% end %>
+</li>
+  </ul>
+
+</footer>

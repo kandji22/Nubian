@@ -1,0 +1,8 @@
+let comment ={
+  'datetime' : '<%=@comment.created_at.strftime("%d %b %y at %I:%M")%>',
+   'commenter' : '<%=@comment.user.name%> ',
+   'body' : '<%= @comment.body %>',
+   'avatar': '<%=@comment.user.profil_img %>'
+
+};
+Comments.displayComment(comment);

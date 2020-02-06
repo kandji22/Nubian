@@ -141,6 +141,7 @@
       <%= song.video_url.html_safe  %>
       <% end %>
       <% end %>
+
     </div>
 
     <!--
@@ -150,40 +151,28 @@
       -->
     <h1> Comments </h1>
     <hr>
-    <div class="add_comments">
-      <!--
-        ===================
-        ===========  a have to change picture for users?????????
-        ===================
-        -->
-      <%= image_tag(@artist.photo_artist, class: "profil--img", alt: "image artiste" ) %>
-      <textarea class="form-input" placeholder="Add your comment..."> </textarea>
-      <button class="btn btn--primary">NAME BUTTON
-      </button>
-    </div>
+    <%= form_for([@artist, @artist.comments.build],html: {id: "form_comment",class: "add_comments" },remote: true) do |form| %>
+      <%=image_tag(@artist.photo_artist, class: "profil--img", alt: "image artiste" ) %>
+        <%=form.text_area(:body, class: 'form-input') %>
+      <%= form.submit  class: 'btn btn-primary' %>
+  <% end %>
+
 
     <!--
       ===================
       ===========  commentaires
       ===================
       -->
-    <div class="comments">
-      <!--
-        ===================
-        ===========  a have to change picture for users???????????
-        ===================
-        -->
-      <%= image_tag(@artist.photo_artist, class: "profil--img", alt: "image artiste" ) %>
-      <span class="auteur"> User Name </span>
-      <span class="date"> Date</span>
-      <p class="comments__paragraphe"> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-        enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat. Duis aute irure dolor in
-        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-        officia deserunt mollit anim id est laborum.
+    <div class="comments" id="comments">
+
+    <% @artist.comments.order(created_at: :asc).each do |comment| %>
+      <%= image_tag(comment.user.profil_img, class: "profil--img", alt: "image artiste" ) %>
+      <span class="auteur"> <%= comment.user.name %> </span>
+      <span class="date"> <%= comment.created_at.strftime("%d %b %y at %I:%M") %></span>
+      <p class="comments__paragraphe">
+        <%= comment.body %>
       </p>
+      <% end %>
     </div>
 
 
@@ -227,8 +216,8 @@ bloc footer
           <h3>Social Networks </h3>
         </a>
       </li>
-      <li> <a href="#">facebook </a> </li>
-      <li> <a href="#"> instagramme </a> </li>
+      <li> <%= link_to("facebook",@artist.url_facebook) %> </li>
+      <li> <%= link_to("instagramme",@artist.url_instagram) %> </li>
       <li> <a href="#">autres </a> </li>
     </ul>
 
@@ -236,7 +225,7 @@ bloc footer
       <li> <h3> Language </h3></li>
       <li>
       <% I18n.available_locales.each do |locale| %>
-        <%= link_to(locale,url_for(locale: locale),class:"nav-link") %>
+        <%= link_to(locale,url_for(locale: locale),class:"nav-link") %> <br>
       <% end %>
 </li>
     </ul>

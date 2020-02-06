@@ -3,6 +3,7 @@
 class User < ApplicationRecord
   before_validation :set_downcase_email
   after_initialize :default_role
+  has_many :comments
   validates :role, inclusion: { in: %w[registered admin] }
   validates :mail, presence: true,
                    uniqueness: true
