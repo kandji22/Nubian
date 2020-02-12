@@ -62,10 +62,11 @@
           <li> <%= link_to(translate("release"),albums_path) %> </li>
           <li> <%= link_to(translate("artist"),artists_path,class: "active") %></li>
           <li> <%= link_to(translate("event"),agendas_path) %> </li>
+          <li> <%= link_to("wichlists", user_wichlists_path(current_user)) %> </li>
           <% if onlyadmincanedit?  %>
           <li> <%= link_to("admin", admin_artists_path) %> </li>
           <% end %>
-          <li> <a href="whish.html">WHICH LIST </a></li>
+
         </ul>
       </div>
     </nav>
@@ -117,12 +118,14 @@
             <td class="playlist__piste">Play</td>
             <th>Track</th>
           </tr>
+          <% i = 0 %>
           <% @songs.each do |song|  %>
           <tr class="playlist__media--line">
-            <td class="playlist__piste">N1 piste</td>
-            <td class="playlist__piste"><button onclick="play('sound1', this)">Play</button></td>
+            <td class="playlist__piste"> piste<%=i %></td>
+            <td class="playlist__piste"><button onclick="play('sound<%= i %>', this)">Play</button></td>
             <th class="playlist__name_music"><%= song.name  %></th>
           </tr>
+          <% i= i + 1 %>
           <% end %>
         </table>
       </div>
@@ -181,26 +184,27 @@
       ===========  sound audio
       ===================
       -->
-    <audio class="sound" id="sound1">
-      <source src="sound/sound1.mp3">
+        <% i = 0 %>
+        <% @songs.each do |song|  %>
+    <audio class="sound" id="sound<%= i %>" ontimeupdate="update(this)">
+      <source src=<%= song.audio_url %>>
     </audio>
-    <audio class="sound" id="sound2">
-      <source src="sound/sound2.mp3">
-    </audio>
+<% i= i + 1 %>
+  <% end %>
 
     <!-- ===================
             ===========  end content
             ===================
             -->
-  </div>
-  <div>
-    <div class="progressBarControl__loadingControl" id="progressBarControl__loadingControl">
-      <div class="progressBarControl__loading" id="progressBarControl__loading"> </div>
-    </div>
-    <div class="bloc_close_btn">
-      <button class="btn" id="btn" type="button" name="button">CLOSE</button>
-    </div>
-  </div>
+          </div>
+          <div>
+            <div class="progressBarControl__loadingControl" id="progressBarControl__loadingControl" onclick="clickProgress(window.currentPlay,this,event)">
+              <div class="progressBarControl__loading" id="progressBarControl__loading"> </div>
+            </div>
+            <div class="bloc_close_btn">
+              <button class="btn" id="btn" type="button" name="button" onclick="closebar()">CLOSE</button>
+            </div>
+          </div>
 
 
   <!--

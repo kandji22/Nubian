@@ -1522,3 +1522,17 @@ svg:focus {
 .alert-danger {
   color: red;
 }
+
+.card--img:hover,.card--img:active {
+transition-delay: 0.1s;
+height: 30rem;
+width: 30rem;
+
+}
+.cache {
+  display: none;
+}
+.vis {
+  display:block;
+  
+}

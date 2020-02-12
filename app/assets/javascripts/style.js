@@ -46,30 +46,16 @@ document.querySelectorAll('[class*="reveal_"]').forEach(function(r){
   * change image when hover link
   the text name of artiste have to be a same name of image
   */
-  let artiste_link = document.getElementsByClassName('name_artiste')
-  for (i=0;i< artiste_link.length;i++)
-  {
-    artiste_link[i].addEventListener('mouseover',function(e){
-      let image = document.createElement('img')
-      image.alt = 'image artiste'
-      let name_image = e.currentTarget.textContent +".jpg"
-      image.src = "images/"+name_image
-      image.className = "photo_artiste"
-      let bloc_menu = document.getElementById('bloc_menu')
 
-        bloc_menu.appendChild(image)
 
-    })
-  }
-  for (i=0;i< artiste_link.length;i++)
-  {
-  artiste_link[i].addEventListener('mouseout',function(e){
-    let image2=document.querySelector('.photo_artiste')
-    let bloc_menu2 = document.getElementById('bloc_menu')
-    bloc_menu2.removeChild(image2)
-  })
-  }
-
+function affiche(e){
+  e.nextElementSibling.classList.remove('cache')
+  e.nextElementSibling.classList.add('vis')
+}
+function cache (e) {
+  e.nextElementSibling.classList.remove('vis')
+  e.nextElementSibling.classList.add('cache')
+}
 
   /**
    * function play music
@@ -118,12 +104,7 @@ document.querySelectorAll('[class*="reveal_"]').forEach(function(r){
   * add listen progress bar
   */
 
-  let bar_progress= document.querySelectorAll(".sound")
-  for(i=0;i<bar_progress.length;i++) {
-    bar_progress[i].addEventListener('timeupdate',function(e){
-      update(e.currentTarget)
-    })
-  }
+
 
   /**
    * function formate time
@@ -195,28 +176,19 @@ Retrieve the coordinates of the mouse cursor
     player.currentTime = (duration * percent) / 100;
 }
 
-/**
- *
- function listener click progressBarControl__loading!!!
- */
- let progress_bar= document.getElementById('progressBarControl__loadingControl')
- progress_bar.addEventListener('click',function(e){
-   clickProgress(window.currentPlay,e.currentTarget,event)
- })
+
 
  /**
   *
   button close bare de progression sound
   */
 
-  let button_close= document.getElementById('btn')
-  button_close.addEventListener('click',function(e){
-   progressBarControl__loadingControl = document.getElementById('progressBarControl__loadingControl')
-   close_btn = document.querySelector('.bloc_close_btn')
-  progressBarControl__loadingControl.style.left='-200%'
-  close_btn.style.left='-200%'
-
-  })
+  function closebar() {
+    progressBarControl__loadingControl = document.getElementById('progressBarControl__loadingControl')
+    close_btn = document.querySelector('.bloc_close_btn')
+   progressBarControl__loadingControl.style.left='-200%'
+   close_btn.style.left='-200%'
+  }
 
   /**
    *

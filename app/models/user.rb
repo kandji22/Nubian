@@ -4,6 +4,7 @@ class User < ApplicationRecord
   before_validation :set_downcase_email
   after_initialize :default_role
   has_many :comments
+  has_and_belongs_to_many :wichlists, class_name: 'Album'
   validates :role, inclusion: { in: %w[registered admin] }
   validates :mail, presence: true,
                    uniqueness: true

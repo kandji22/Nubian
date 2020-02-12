@@ -3,7 +3,9 @@
 Rails.application.routes.draw do
   root to: 'home#index'
   scope '/:locale' do
-    resources :users
+    resources :users do
+      resources :wichlists
+    end
     resources :sessions, only: %i[new create destroy]
     resources :artists do
       resources :comments, only: [:create]

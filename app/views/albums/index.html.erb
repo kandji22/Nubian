@@ -63,12 +63,7 @@
 
           <% end %>
         </ul>
-        <div class="search-bar">
-          <input type="text" class="search-bar__input" name="search-bar__input" placeholder="Search Album">
-          <button class="btn btn--primary btn--search">
-            SEARCH
-          </button>
-        </div>
+
       </nav>
     </header>
 
@@ -89,15 +84,17 @@
 
       <div class="card-presentation" id="card-presentation">
         <% @album.each  do |album| %>
+        <%= link_to album_path(album) do  %>
         <div class="info-and-card ">
           <div class="info">
             <h3 class=""> <%= album.title %> </h3>
             <span class=""><%= album.name %> </span>
           </div>
           <div class="card">
-          <%= image_tag(album.photo_album,alt: "image card presentation")  %>
+          <%= image_tag(album.photo_album,alt: "image card presentation",class:"card--img")  %>
           </div>
         </div>
+        <% end %>
           <% end %>
 
 

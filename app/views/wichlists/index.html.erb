@@ -1,0 +1,131 @@
+<body>
+
+  <!--
+  ===================
+  =========== svg icon
+  ===================
+  -->
+  <svg style="display:none;">
+    <defs>
+      <symbol id="add_black">
+        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+        <path d="M0 0h24v24H0z" fill="none" />
+      </symbol>
+      <symbol id="delete_black">
+        <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
+        <path d="M0 0h24v24H0z" fill="none" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <!--
+  ===================
+  =========== bloc header document
+  ===================
+  -->
+  <header>
+
+    <!--
+    ===================
+    =========== navigation bar for telephone/tablet
+    ===================
+    -->
+    <nav class="navebar-tel-tab" style="display: block">
+      <label class="label-chk" for="chk">&#9776;</label>
+      <input type="checkbox" class="chk" name="chk" id="chk">
+      <ul class="navebar-tel-tab--navigation">
+        <li> <%= link_to(translate("latest"),songs_path) %> </li>
+        <li> <%= link_to(translate("release"),albums_path,class: "active") %> </li>
+        <li> <%= link_to(translate("artist"),artists_path) %></li>
+        <li> <%= link_to(translate("event"),agendas_path) %> </li>
+        <% if onlyadmincanedit?  %>
+        <li> <%= link_to("admin", admin_artists_path) %> </li>
+        <% end %>
+      </ul>
+    </nav>
+
+
+  </header>
+
+  <!--
+  ===================
+  =========== bloc content for to make border left and right
+  ===================
+  -->
+  <div class="content">
+    <!--
+      ===================
+      ===========  Track
+      ===================
+      -->
+    <h1 id="track"> wishlist Album </h1>
+    <%= @wichlists.each do |wichlist| %>
+    <div>
+    <div class="track " id="track<%= wichlist.id %>">
+      <div class="track-card">
+        <p>  <%= wichlist.name %>  </p>
+        <div class="track-card--image">
+          <%= image_tag(wichlist.photo_album, alt: "image goal" ) %>
+        </div>
+        <div class="card-button">
+
+            <%= link_to 'Delete', user_wichlist_path(current_user,wichlist.id), class: 'btn ', role: 'button',method: :delete, remote: true %>
+
+        </div>
+      </div>
+      <div class="playlist">
+        <table class="playlist__media">
+          <tr>
+            <th>#</th>
+            <td class="playlist__piste">Play</td>
+            <th>Track</th>
+          </tr>
+          <% i = 0 %>
+          <% wichlist.songs.each do |song|  %>
+          <tr class="playlist__media--line">
+            <td class="playlist__piste"> piste<%=i %></td>
+            <td class="playlist__piste"><button onclick="play('sound<%= i %>', this)">Play</button></td>
+            <th class="playlist__name_music"><%= song.name  %></th>
+          </tr>
+          <% i= i + 1 %>
+          <% end %>
+        </table>
+      </div>
+    </div>
+    <% i = 0 %>
+    <% wichlist.songs.each do |song|  %>
+<audio class="sound" id="sound<%= i %>" ontimeupdate="update(this)">
+  <source src=<%= song.audio_url %>>
+</audio>
+<% i= i + 1 %>
+<% end %>
+
+<!-- ===================
+      ===========  end content
+      ===================
+      -->
+    </div>
+      </div>
+    <div>
+      <div class="progressBarControl__loadingControl" id="progressBarControl__loadingControl" onclick="clickProgress(window.currentPlay,this,event)">
+        <div class="progressBarControl__loading" id="progressBarControl__loading"> </div>
+      </div>
+      <div class="bloc_close_btn">
+        <button class="btn" id="btn" type="button" name="button" onclick="closebar()">CLOSE</button>
+      </div>
+    </div>
+    <% end %>
+
+
+
+    <!-- ===================
+            ===========  end content
+            ===================
+            -->
+
+
+
+
+</body>
+
+</html>

@@ -67,6 +67,7 @@ end
 
   def show
     @songs = @album.songs
+    @disable = current_user.wichlists.exists?(@album.id) if login?
   end
 
   private

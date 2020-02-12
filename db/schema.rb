@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200205135618) do
+ActiveRecord::Schema.define(version: 20200211145837) do
 
   create_table "agendas", force: :cascade do |t|
     t.string "name"
@@ -27,6 +27,11 @@ ActiveRecord::Schema.define(version: 20200205135618) do
     t.string "photo_album"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "albums_users", id: false, force: :cascade do |t|
+    t.integer "album_id", null: false
+    t.integer "user_id", null: false
   end
 
   create_table "artists", force: :cascade do |t|
