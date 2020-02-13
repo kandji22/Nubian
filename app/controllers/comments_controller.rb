@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
       # redirect_to().  It's a caonvenient way of setting a flash notice or
       # alert without referencing the flash Hash explicitly.
       if @comment.save!
+        CommentMailer.new_comment(@comment).deliver_now
         format.html { redirect_to @artist }
         format.js
       else

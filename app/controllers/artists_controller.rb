@@ -77,6 +77,6 @@ end
   end
 
   def artist_params
-    params.require(:artist).permit(:name, :photo_artist, :bibliographie, :url_facebook, :url_instagram)
+    params.require(:artist).permit(:name, :photo_artist, :bibliographie, :url_facebook, :mail)
   end
 end

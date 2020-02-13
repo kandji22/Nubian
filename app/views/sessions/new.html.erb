@@ -27,7 +27,7 @@
     <section class="cadre">
       <%= link_to translate("signup"),new_user_path,style: "color: green;" %>
       <div class="text--center">
-        <h1 class="gamma">Sign up</h1>
+          <h1 class="gamma"><%=translate("login") %></h1>
       </div>
       <%= form_tag(sessions_path) do %>
       <% unless(flash[:alert].nil?) %>

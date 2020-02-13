@@ -11,16 +11,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    respond_to do |format|
-      if @user.save
-        # In this format call, the flash message is being passed directly to
-        # redirect_to().  It's a caonvenient way of setting a flash notice or
-        # alert without referencing the flash Hash explicitly.
-        format.html { redirect_to admin_showuser_path(@user), notice: 'User was successfully created.' }
-      else
-        format.html { render :new }
-      end
-    end
+
+    if @user.save
+      UserMailer.signup_confirmation(@user).deliver
+      redirect_to admin_showuser_path(@user), notice: 'User was successfully created.'
+    else
+      render :new
+
+  end
   end
 
   def update
