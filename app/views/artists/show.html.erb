@@ -38,8 +38,14 @@
         <li> <%= link_to(translate("release"),albums_path) %> </li>
         <li> <%= link_to(translate("artist"),artists_path,class: "active") %></li>
         <li> <%= link_to(translate("event"),agendas_path) %> </li>
+        <% if login?  %>
+        <li> <%= link_to(translate("follower"), user_wichlists_path(current_user)) %> </li>
+        <% end %>
         <% if onlyadmincanedit?  %>
         <li> <%= link_to("admin", admin_artists_path) %> </li>
+        <% end %>
+        <% I18n.available_locales.each do |locale| %>
+        <li>  <%= link_to(locale,url_for(locale: locale),class:"nav-link") %> </li>
         <% end %>
       </ul>
     </nav>
@@ -49,27 +55,33 @@
     =========== bloc navigation bar for laptop
     ===================
     -->
+
     <nav class="navebar">
-        <%= image_tag(@artist.photo_artist, class: "image_background", alt: "image background" ) %>
-      <div class="navebar__absolute">
+
+      <div class="navebar__absolute navebar_presentation navebar_presentation--artist ">
         <div class="bloc_logo">
-          <a href="acceuil.html">
-            <%= image_tag("logo.svg", class: "logo", alt: "logo nubian") %>
-           </a>
+          <%= link_to(root_path) do %>
+            <%= image_tag("logo.svg",class: "logo", alt: "logo nubian") %>
+           <% end %>
         </div>
         <ul class="main-navigation">
           <li> <%= link_to(translate("latest"),songs_path) %> </li>
           <li> <%= link_to(translate("release"),albums_path) %> </li>
           <li> <%= link_to(translate("artist"),artists_path,class: "active") %></li>
           <li> <%= link_to(translate("event"),agendas_path) %> </li>
-          <li> <%= link_to("wichlists", user_wichlists_path(current_user)) %> </li>
+          <% if login?  %>
+          <li> <%= link_to(translate("follower"), user_wichlists_path(current_user)) %> </li>
+          <% end %>
           <% if onlyadmincanedit?  %>
           <li> <%= link_to("admin", admin_artists_path) %> </li>
           <% end %>
-
+          <% I18n.available_locales.each do |locale| %>
+          <li>  <%= link_to(locale,url_for(locale: locale),class:"nav-link") %> </li>
+          <% end %>
         </ul>
       </div>
     </nav>
+    <%= image_tag(@artist.photo_artist, class: "image_background", alt: "image background" ) %>
   </header>
 
   <!--
@@ -77,7 +89,7 @@
   =========== bloc content for to make border left and right
   ===================
   -->
-  <div class="content">
+  <div class="content content--artiste">
 
     <!--
     ===================
@@ -85,16 +97,18 @@
     ===================
     -->
     <h1> Biography </h1>
-    <hr>
-    <div class="description__artiste">
 
-      <%= image_tag(@artist.photo_artist, class: "description__artiste--img ", alt: "image goal" ) %>
+    <div class="description__artiste">
       <div class="description__paragraphe">
         <p class="home__paragraphe "> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis
           nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
           dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
           cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <ul class="main-navigation">
+          <%= link_to("facebook",@artist.url_facebook) %> </li>
+         <%= link_to("instagramme",@artist.mail) %>
+         </ul>
       </div>
     </div>
 
@@ -137,7 +151,7 @@
       ===================
       -->
     <h1> Video </h1>
-    <hr>
+
     <div class="video-artite">
       <% @songs.each do |song|  %>
       <% if song.video_url.present? %>
@@ -152,14 +166,15 @@
       ===========  ADD Comment
       ===================
       -->
+      <div class="div_comments">
     <h1> Comments </h1>
-    <hr>
+
     <%= form_for([@artist, @artist.comments.build],html: {id: "form_comment",class: "add_comments" },remote: true) do |form| %>
       <%=image_tag(@artist.photo_artist, class: "profil--img", alt: "image artiste" ) %>
         <%=form.text_area(:body, class: 'form-input') %>
       <%= form.submit  class: 'btn btn-primary' %>
   <% end %>
-
+</div>
 
     <!--
       ===================
@@ -179,18 +194,7 @@
     </div>
 
 
-    <!--
-      ===================
-      ===========  sound audio
-      ===================
-      -->
-        <% i = 0 %>
-        <% @songs.each do |song|  %>
-    <audio class="sound" id="sound<%= i %>" ontimeupdate="update(this)">
-      <source src=<%= song.audio_url %>>
-    </audio>
-<% i= i + 1 %>
-  <% end %>
+
 
     <!-- ===================
             ===========  end content
@@ -199,42 +203,31 @@
           </div>
           <div>
             <div class="progressBarControl__loadingControl" id="progressBarControl__loadingControl" onclick="clickProgress(window.currentPlay,this,event)">
+              <span class="progressBarControl__loadingControl--artist"><%= @artist.name %> </span>
+              <!--
+                ===================
+                ===========  sound audio
+                ===================
+                -->
+                  <% i = 0 %>
+                  <% @songs.each do |song|  %>
+              <audio class="sound" id="sound<%= i %>" ontimeupdate="update(this)">
+                <source src=<%= song.audio_url %>>
+
+              </audio>
+            <span class="progressBarControl__loadingControl--song" id="loadingControlsound<%= i %>" style="display:none"> <%= song.name %> </span>
+          <% i= i + 1 %>
+            <% end %>
               <div class="progressBarControl__loading" id="progressBarControl__loading"> </div>
             </div>
-            <div class="bloc_close_btn">
-              <button class="btn" id="btn" type="button" name="button" onclick="closebar()">CLOSE</button>
+            <div class="bloc_close_btn" onclick= "closebar()">
+
+            &times
             </div>
           </div>
 
 
-  <!--
-  ===================
-  ===========
-bloc footer
-  ===================
-  -->
-  <footer class="footer footer--artist">
 
-    <ul class="footer__main">
-      <li> <a href="#">
-          <h3>Social Networks </h3>
-        </a>
-      </li>
-      <li> <%= link_to("facebook",@artist.url_facebook) %> </li>
-      <li> <%= link_to("instagramme",@artist.mail) %> </li>
-      <li> <a href="#">autres </a> </li>
-    </ul>
-
-    <ul class="footer__main">
-      <li> <h3> Language </h3></li>
-      <li>
-      <% I18n.available_locales.each do |locale| %>
-        <%= link_to(locale,url_for(locale: locale),class:"nav-link") %> <br>
-      <% end %>
-</li>
-    </ul>
-
-  </footer>
 
 
 </body>

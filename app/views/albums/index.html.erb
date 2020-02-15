@@ -4,7 +4,6 @@
   <head>
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,300,400,500,700,700i,900&display=swap" rel="stylesheet">
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/style.css">
     <title> Nubian Spirit</title>
   </head>
 
@@ -14,7 +13,7 @@
 ===================
 -->
 
-  <body>
+  <body class="showalbum">
 
     <!--
   ===================
@@ -36,8 +35,14 @@
           <li> <%= link_to(translate("release"),albums_path,class: "active") %> </li>
           <li> <%= link_to(translate("artist"),artists_path) %></li>
           <li> <%= link_to(translate("event"),agendas_path) %> </li>
+          <% if login?  %>
+          <li> <%= link_to(translate("follower"), user_wichlists_path(current_user)) %> </li>
+          <% end %>
           <% if onlyadmincanedit?  %>
           <li> <%= link_to("admin", admin_artists_path) %> </li>
+          <% end %>
+          <% I18n.available_locales.each do |locale| %>
+          <li>  <%= link_to(locale,url_for(locale: locale),class:"nav-link") %> </li>
           <% end %>
         </ul>
       </nav>
@@ -58,9 +63,14 @@
           <li> <%= link_to(translate("release"),albums_path,class: "active") %> </li>
           <li> <%= link_to(translate("artist"),artists_path) %></li>
           <li> <%= link_to(translate("event"),agendas_path) %> </li>
+          <% if login?  %>
+          <li> <%= link_to(translate("follower"), user_wichlists_path(current_user)) %> </li>
+          <% end %>
           <% if onlyadmincanedit?  %>
           <li> <%= link_to("admin", admin_artists_path) %> </li>
-
+          <% end %>
+          <% I18n.available_locales.each do |locale| %>
+          <li>  <%= link_to(locale,url_for(locale: locale),class:"nav-link") %> </li>
           <% end %>
         </ul>
 
@@ -72,6 +82,8 @@
   =========== block content for border left and right
   ===================
   -->
+  <h1> <%= translate("allalbum") %> </h1>
+  <hr>
     <div class="content" id="content">
 
       <!--
@@ -79,8 +91,8 @@
     =========== Album
     ===================
     -->
-      <h1> <%= translate("allalbum") %> </h1>
-      <hr>
+
+
 
       <div class="card-presentation" id="card-presentation">
         <% @album.each  do |album| %>
@@ -91,13 +103,14 @@
             <span class=""><%= album.name %> </span>
           </div>
           <div class="card">
-          <%= image_tag(album.photo_album,alt: "image card presentation",class:"card--img")  %>
+          <%= image_tag(album.photo_album,alt: "image card presentation")  %>
+          </div>
+          <div class="card-presentation__circle">
+
           </div>
         </div>
         <% end %>
           <% end %>
-
-
       </div>
 
       <!--
@@ -107,7 +120,7 @@
     -->
     </div>
 
-<%= render(partial: "footer")  %>
+
 
   </body>
 

@@ -1,4 +1,4 @@
-<body>
+<body class="follower">
 
   <!--
   ===================
@@ -41,6 +41,9 @@
         <% if onlyadmincanedit?  %>
         <li> <%= link_to("admin", admin_artists_path) %> </li>
         <% end %>
+        <% I18n.available_locales.each do |locale| %>
+        <li>  <%= link_to(locale,url_for(locale: locale),class:"nav-link") %> </li>
+        <% end %>
       </ul>
     </nav>
 
@@ -58,7 +61,7 @@
       ===========  Track
       ===================
       -->
-    <h1 id="track"> wishlist Album </h1>
+    <h1 id="track"> <%= translate("followeralbum") %></h1>
     <%= @wichlists.each do |wichlist| %>
     <div>
     <div class="track " id="track<%= wichlist.id %>">
@@ -92,13 +95,7 @@
         </table>
       </div>
     </div>
-    <% i = 0 %>
-    <% wichlist.songs.each do |song|  %>
-<audio class="sound" id="sound<%= i %>" ontimeupdate="update(this)">
-  <source src=<%= song.audio_url %>>
-</audio>
-<% i= i + 1 %>
-<% end %>
+
 
 <!-- ===================
       ===========  end content
@@ -108,10 +105,20 @@
       </div>
     <div>
       <div class="progressBarControl__loadingControl" id="progressBarControl__loadingControl" onclick="clickProgress(window.currentPlay,this,event)">
+        <% i = 0 %>
+        <% wichlist.songs.each do |song|  %>
+    <audio class="sound" id="sound<%= i %>" ontimeupdate="update(this)">
+      <source src=<%= song.audio_url %>>
+    </audio>
+    <span class="progressBarControl__loadingControl--song" id="loadingControlsound<%= i %>" style="display:none"> <%= song.name %> </span>
+    <% i= i + 1 %>
+    <% end %>
+
         <div class="progressBarControl__loading" id="progressBarControl__loading"> </div>
       </div>
-      <div class="bloc_close_btn">
-        <button class="btn" id="btn" type="button" name="button" onclick="closebar()">CLOSE</button>
+      <div class="bloc_close_btn" onclick= "closebar()">
+
+      &times
       </div>
     </div>
     <% end %>

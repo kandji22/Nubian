@@ -53,15 +53,18 @@
         <%= image_tag(@album.photo_album, class: "image_background", alt: "image background" ) %>
       <div class="navebar__absolute">
         <div class="bloc_logo">
-          <a href="acceuil.html">
-            <%= image_tag("logo.svg", class: "logo", alt: "logo nubian") %>
-           </a>
+          <%= link_to(root_path) do %>
+            <%= image_tag("logo.svg",class: "logo", alt: "logo nubian") %>
+           <% end %>
         </div>
         <ul class="main-navigation">
           <li> <%= link_to(translate("latest"),songs_path) %> </li>
           <li> <%= link_to(translate("release"),albums_path,class: "active") %> </li>
           <li> <%= link_to(translate("artist"),artists_path) %></li>
           <li> <%= link_to(translate("event"),agendas_path) %> </li>
+          <% if login?  %>
+          <li> <%= link_to(translate("follower"), user_wichlists_path(current_user)) %> </li>
+          <% end %>
           <% if onlyadmincanedit?  %>
           <li> <%= link_to("admin", admin_artists_path) %> </li>
           <% end %>
@@ -75,7 +78,7 @@
   =========== bloc content for to make border left and right
   ===================
   -->
-  <div class="content">
+  <div class="content content--artiste content--album">
 
 
 
@@ -89,18 +92,16 @@
       <div class="track-card">
         <div class="track-card--image">
           <%= image_tag(@album.photo_album, alt: "image goal" ) %>
+          <% if login? %>
+          <div class="card-button">
+            <%= form_tag(user_wichlists_path(current_user), method: :post) do %>
+         <%= hidden_field_tag(:album_id, @album.id) %>
+
+              <%= submit_tag("ADD Album",class: "btn btn--svg", disabled: @disable )%>
+              <% end %>
+              <% end %>
+          </div>
         </div>
-        <div class="card-button">
-          <%= form_tag(user_wichlists_path(current_user), method: :post) do %>
-       <%= hidden_field_tag(:album_id, @album.id) %>
-
-            <%= submit_tag("ADD Album",class: "btn btn--svg", disabled: @disable )%>
-            <% end %>
-        </div>
-
-
-
-
 
       </div>
       <div class="playlist">
@@ -137,38 +138,32 @@
       <% end %>
       <% end %>
     </div>
-    <!--
-      ===================
-      ===========  sound audio
-      ===================
-      -->
-        <% i = 0 %>
-        <% @songs.each do |song|  %>
-    <audio class="sound" id="sound<%= i %>" ontimeupdate="update(this)">
-      <source src=<%= song.audio_url %>>
-    </audio>
+
+
+    <div class="progressBarControl__loadingControl" id="progressBarControl__loadingControl" onclick="clickProgress(window.currentPlay,this,event)">
+      <span class="progressBarControl__loadingControl--artist"> </span>
+      <!--
+        ===================
+        ===========  sound audio
+        ===================
+        -->
+          <% i = 0 %>
+          <% @songs.each do |song|  %>
+      <audio class="sound" id="sound<%= i %>" ontimeupdate="update(this)">
+        <source src=<%= song.audio_url %>>
+
+      </audio>
+    <span class="progressBarControl__loadingControl--song" id="loadingControlsound<%= i %>" style="display:none"> <%= song.name %> </span>
   <% i= i + 1 %>
-  <% end %>
+    <% end %>
+      <div class="progressBarControl__loading" id="progressBarControl__loading">
+       </div>
 
-  <!-- ===================
-          ===========  end content
-          ===================
-          -->
-        </div>
-        <div>
-          <div class="progressBarControl__loadingControl" id="progressBarControl__loadingControl" onclick="clickProgress(window.currentPlay,this,event)">
-            <div class="progressBarControl__loading" id="progressBarControl__loading"> </div>
-          </div>
-          <div class="bloc_close_btn">
-            <button class="btn" id="btn" type="button" name="button" onclick="closebar()">CLOSE</button>
-          </div>
-        </div>
+    <div class="bloc_close_btn" onclick= "closebar()">
 
-
-    <!-- ===================
-            ===========  end content
-            ===================
-            -->
+    &times
+    </div>
+  </div>
   </div>
 
 

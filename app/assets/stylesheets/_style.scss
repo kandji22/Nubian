@@ -37,13 +37,13 @@ a {
   color: white;
   font-weight: 400;
 }
-
+.main-navigation
 a:hover, a:focus {
   border-bottom: 1px solid #CCC6C1;
 }
 
 h1 {
-  margin: 6rem 0 3rem 0;
+  margin: 1rem 1rem;
   font-weight: normal;
   font-size: 4.8rem;
   line-height: 1.2;
@@ -153,6 +153,7 @@ svg {
    ========================================================================== */
 .navebar-tel-tab {
   display: none;
+
 }
 
 .navebar-tel-tab .menu-img {
@@ -166,6 +167,7 @@ svg {
     display: block;
     background-color: #EAA400;
     height: 7rem;
+
   }
 }
 
@@ -178,17 +180,25 @@ svg {
 
 .navebar {
   position: relative;
+  position: absolute;
+  top: 0;
+  width: 100%;
   margin-bottom: 4rem;
   display: flex;
   justify-content: flex-start;
-  height: 80rem;
+
 }
 
 @media screen and (min-width: 481px) and (max-width: 960px) {
   .navebar {
     display: none;
     background-color: #CCC6C1;
+    height: 0;
   }
+  .image_background {
+    display: none;
+  }
+
 }
 
 @media screen and (max-width: 480px) {
@@ -196,12 +206,17 @@ svg {
     display: none;
     background-color: #CCC6C1;
   }
+  .image_background {
+    display: none;
+  }
 }
 
-.navebar .image_background {
-  height: 100%;
-  width: 100%;
+.image_background {
+  top: 8rem;
+  height: 135rem;
+  width: 135rem;
   z-index: 0;
+
 }
 
 .navebar .navebar__absolute {
@@ -290,12 +305,13 @@ svg {
 .navebar_presentation .main-navigation {
   display: flex;
   align-items: center;
-  width: 40%;
+  width: 60%;
   height: 30%;
   padding-left: 4rem;
   margin-right: 4rem;
   justify-content: space-between;
   border: none;
+
 }
 
 .navebar_presentation .bloc_logo {
@@ -718,6 +734,9 @@ svg:focus {
   height: 21rem;
   margin: 4rem 0;
 }
+.div_comments {
+
+}
 
 .add_comments .form-input {
   margin-left: 5rem;
@@ -933,6 +952,7 @@ svg:focus {
   border-top: 0.5px solid #CCC6C1;
   display: flex;
   flex-direction: row;
+  padding: 6rem;
 }
 
 .track .playlist {
@@ -995,9 +1015,12 @@ svg:focus {
 --------------
 -----------------------------*/
 .card-presentation {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  z-index: 9999999;
+  justify-content: flex-start;
 }
 
 .card-presentation .info-and-card {
@@ -1006,6 +1029,7 @@ svg:focus {
   text-align: center;
   padding: 2rem;
   margin: 4rem;
+  position: relative;
 }
 
 @media screen and (min-width: 481px) and (max-width: 960px) {
@@ -1019,6 +1043,7 @@ svg:focus {
   .card-presentation .card {
     text-align: center;
     width: 100%;
+    z-index: 99999
   }
 }
 
@@ -1026,6 +1051,26 @@ svg:focus {
   height: 25rem;
   width: 25rem;
   margin-top: 2rem;
+
+
+}
+.card-presentation .card-presentation__hover  {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.5);
+  bottom:2.2rem;
+  height: 25rem;
+  width: 25rem;
+  z-index: 999;
+  transform: scale(0);
+  transition: ease-in-out 0.7s ;
+}
+.info-and-card:hover .card-presentation__hover{
+  transform: scale(1);
+}
+
+.card-presentation__hover button {
+
+  margin-top: 10rem;
 }
 
 .card-presentation .info span {
@@ -1035,7 +1080,10 @@ svg:focus {
 }
 
 .card-presentation .info h3 {
-  color: #CCC6C1;
+  color: #EAA400;
+}
+.card-presentation .info span {
+  color: #EAA400;
 }
 
 @media screen and (min-width: 481px) and (max-width: 960px) {
@@ -1139,8 +1187,8 @@ svg:focus {
 }
 
 .home__paragraphe {
-  height: 30rem;
-  width: 50rem;
+
+  width: 80rem;
 }
 
 .description__paragraphe--black {
@@ -1163,12 +1211,20 @@ svg:focus {
     height: 10rem;
     background: black;
   }
+  .home__paragraphe {
+
+    width: 40rem;
+  }
 }
 
 @media screen and (max-width: 480px) {
   .home-header {
     height: 7rem;
     background: black;
+  }
+  .home__paragraphe {
+
+    width: 30rem;
   }
 }
 
@@ -1200,20 +1256,31 @@ svg:focus {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  height: 45rem;
-}
+  justify-content: center;
+  align-items: top;
+  padding: 0 6rem 6rem;
 
+}
+.content--artiste {
+  margin-top: 2rem;
+}
+.content--artiste h1 {
+  margin: 6rem 0;
+}
+.navebar_presentation--artist {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
 @media screen and (min-width: 481px) and (max-width: 960px) {
-  .description__artiste {
-    height: 90rem;
+
+  .content--artiste {
+    margin-top: 2rem;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .description__artiste {
-    height: 90rem;
+
+  .content--artiste {
+    margin-top: 2rem;
   }
 }
 
@@ -1306,12 +1373,11 @@ svg:focus {
 .navebar-tel-tab--navigation {
   background-color: #EAA400;
   position: absolute;
-  position: fixed;
   height: 60rem;
   width: 30rem;
   top: 6rem;
   left: -100%;
-  z-index: 200000;
+  z-index: 90000000 !important;
   transition: all 0.5s ease-in-out;
 }
 
@@ -1353,6 +1419,7 @@ svg:focus {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding: 3rem;
 }
 
 .video-artite iframe {
@@ -1383,40 +1450,109 @@ svg:focus {
 
 #progressBarControl__loading {
   background-color: #EAA400;
-  height: 100%;
+  height: 1px;
   width: 0;
   padding-top: 2rem;
   text-align: center;
-  font-size: 1.5rem;
-  line-height: 1.6;
+  position: absolute;
+  bottom:0.2px;
+
+}
+.progressBarControl__loadingControl--artist{
+  position: absolute;
+  bottom:5rem;
+  right: 50rem;
+  z-index: 9999;
+  font-size:1.5rem;
+  text-transform:uppercase;
+}
+.progressBarControl__loadingControl--song {
+  position: absolute;
+  bottom:5rem;
+  right: 37rem;
+  z-index: 9999;
+  font-size:1.5rem;
+  text-transform: uppercase;
+
 }
 
+@media screen and (min-width: 481px) and (max-width: 960px) {
+  .progressBarControl__loadingControl--artist {
+  right: 13rem;
+  font-size:0.8rem;
+  }
+  .progressBarControl__loadingControl--song {
+  right: 7rem;
+  font-size:0.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .progressBarControl__loadingControl--artist {
+  right: 9rem;
+  font-size:0.5rem;
+  }
+  .progressBarControl__loadingControl--song {
+  right: 4rem;
+  font-size:0.5rem;
+  }
+}
+
+
+
 .progressBarControl__loadingControl {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: white;
+  border: 0.2px solid rgba(255, 255, 255, 0.5);
   transition: 1s ease-in-out;
   left: -200%;
-  height: 10rem;
-  width: 80%;
+  height: 8rem;
+  width: 95%;
   position: absolute;
   position: fixed;
   bottom: 0;
+  font-size: 1.2rem;
+  text-align: left;
 }
 
 .bloc_close_btn {
-  left: -200%;
-  border-right: 0.2px solid #CCC6C1;
-  border-left: 0.2px solid #CCC6C1;
+  left: 95%;
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
   transition: 1s ease-in-out;
   position: absolute;
   position: fixed;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.5);
-  width: 10rem;
-  height: 10rem;
+  background-color:white;
+  width: 6rem;
+  height: 8rem;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  font-size: 3.9rem;
+  cursor: pointer;
+
+}
+
+@media screen and (min-width: 481px) and (max-width: 960px) {
+.bloc_close_btn {
+  font-size: 2.8rem;
+  left: 92%;
+  padding-right: 3rem;
+}
+}
+
+@media screen and (max-width: 480px) {
+  .bloc_close_btn {
+    font-size: 1.8rem;
+    left: 92%;
+    padding-right: 3rem;
+  }
+
+}
+
+.bloc_close_btn .btn {
+  width: 3rem;
+  height: 3rem;
 }
 
 /* event ----
@@ -1438,7 +1574,7 @@ svg:focus {
   position: fixed;
   height: 8rem;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   width: 100%;
   z-index: 2000;
@@ -1453,11 +1589,12 @@ svg:focus {
   margin-top: 8rem;
   width: 100%;
   border-collapse: collapse;
+
 }
 
 .events .events__table tr {
   cursor: pointer;
-  text-align: center;
+  text-align: left;
 }
 
 .events .events__table tr:hover {
@@ -1467,8 +1604,11 @@ svg:focus {
 .events .events__table tr td {
   color: #0F0E0E;
   padding: 4rem 0;
-  font-size: 2.4rem;
+  font-size: 2.8rem;
   line-height: 1.2;
+}
+.events .events__table tr td:first-child {
+  padding-left: 14rem;
 }
 
 @media screen and (min-width: 481px) and (max-width: 960px) {
@@ -1495,6 +1635,9 @@ svg:focus {
 
 .admin .btn:hover {
   background-color: #EAA400;
+}
+.admin {
+  background: asset-url("arture.jpg") no-repeat center center fixed;
 }
 
 /* footer STYLEQUIDE ----
@@ -1534,5 +1677,67 @@ width: 30rem;
 }
 .vis {
   display:block;
-  
+
+}
+.body__song {
+  background-color:rgba(255, 255, 255, 0.5);
+}
+.body__song .progressBarControl__loadingControl {
+  background-color: black;
+}
+.body__song .progressBarControl__loadingControl--song {
+  color: white;
+}
+.body__song h3 {
+  color: black !important;
+}
+.bloc-video {
+
+  width: 60%;
+}
+
+.body__song .card-presentation {
+
+
+  justify-content: flex-start;
+}
+.body__song iframe {
+  width: 100%;
+}
+
+.card-presentation__circle {
+  position: absolute;
+    width: 16rem;
+    height: 16rem;
+    border-radius: 16rem;
+    background: #EAA400;
+    bottom: 6rem;
+    left: 8rem;
+    z-index: -222 !important;
+    transition: all 0.2s ease-in-out;
+}
+
+.card:hover + .card-presentation__circle {
+  left: 18rem;
+}
+
+.content--album {
+
+  margin-top: 135rem;
+}
+
+.acceuil .description__artiste {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 45rem;
+  padding: 0
+}
+.showalbum {
+  background: asset-url("joel.jpg") no-repeat center center fixed;
+}
+.follower {
+  background: asset-url("joseph.jpg") no-repeat center center fixed;
 }

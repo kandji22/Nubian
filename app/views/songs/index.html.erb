@@ -6,7 +6,7 @@
 ===================
 -->
 
-  <body>
+  <body class="body__song">
 
     <!--
   ===================
@@ -28,8 +28,14 @@
           <li> <%= link_to(translate("release"),albums_path) %> </li>
           <li> <%= link_to(translate("artist"),artists_path) %></li>
           <li> <%= link_to(translate("event"),agendas_path) %> </li>
+          <% if login?  %>
+          <li> <%= link_to(translate("follower"), user_wichlists_path(current_user)) %> </li>
+          <% end %>
           <% if onlyadmincanedit?  %>
           <li> <%= link_to("admin", admin_artists_path) %> </li>
+          <% end %>
+          <% I18n.available_locales.each do |locale| %>
+          <li>  <%= link_to(locale,url_for(locale: locale),class:"nav-link") %> </li>
           <% end %>
         </ul>
       </nav>
@@ -50,19 +56,27 @@
           <li> <%= link_to(translate("release"),albums_path) %> </li>
           <li> <%= link_to(translate("artist"),artists_path) %></li>
           <li> <%= link_to(translate("event"),agendas_path) %> </li>
+          <% if login?  %>
+          <li> <%= link_to(translate("follower"), user_wichlists_path(current_user)) %> </li>
+          <% end %>
           <% if onlyadmincanedit?  %>
           <li> <%= link_to("admin", admin_artists_path) %> </li>
+          <% end %>
+          <% I18n.available_locales.each do |locale| %>
+          <li>  <%= link_to(locale,url_for(locale: locale),class:"nav-link") %> </li>
           <% end %>
         </ul>
 
       </nav>
     </header>
-
+    <h1> <%=translate("recentsoundandvideo")%> </h1>
+    <hr>
     <!--
   ===================
   =========== block content for border left and right
   ===================
   -->
+
     <div class="content" id="content">
 
       <!--
@@ -70,10 +84,10 @@
     =========== list most recent sound
     ===================
     -->
-      <h1> <%=translate("recentsound")%> </h1>
-      <hr>
+
 
       <div class="card-presentation" id="card-presentation">
+        <% i = 0 %>
         <% @song.each  do |song| %>
         <div class="info-and-card ">
           <div class="info">
@@ -81,37 +95,57 @@
             <span class=""><%= song.name %> </span>
           </div>
           <div class="card">
-          <%= image_tag(song.photo_song,alt: "image card presentation",class:"card--img")  %>
+          <%= image_tag(song.photo_song,alt: "image card presentation")  %>
           </div>
-          <audio controls>
-            <source src="<%= song.audio_url %>">
-          </audio>
-        </div>
+          <div class="card-presentation__hover" style= "display: block">
+            <button onclick="play('sound<%= i %>', this)">Play</button>
+          </div>
 
+        </div>
+        <div class="bloc-video">
+
+
+        <%=song.video_url.html_safe %>
+        </div>
+<% i= i + 1 %>
           <% end %>
 
-        <!--
-      ===================
-      =========== list most recent video
-      ===================
-      -->
-      </div>
-      <h1> <%=translate("recentvideo")%> </h1>
-      <hr>
-      <div class="video-artite">
-        <% @song.each  do |song| %>
-        <%=song.video_url.html_safe %>
-    <% end %>
 
       </div>
 
-      <!--
-    ===================
-    =========== end div content
-    ===================
-    -->
-    </div>
-<%= render(partial: "footer")  %>
+
+
+
+
+      <!-- ===================
+              ===========  end content
+              ===================
+              -->
+            </div>
+            <div>
+              <div class="progressBarControl__loadingControl" id="progressBarControl__loadingControl" onclick="clickProgress(window.currentPlay,this,event)">
+                <!--
+                  ===================
+                  ===========  sound audio
+                  ===================
+                  -->
+                  <% i = 0 %>
+                  <% @song.each do |song|  %>
+              <audio class="sound" id="sound<%= i %>" ontimeupdate="update(this)">
+                <source src=<%= song.audio_url %>>
+
+              </audio>
+            <span class="progressBarControl__loadingControl--song" id="loadingControlsound<%= i %>" style="display:none"> <%= song.name %> </span>
+          <% i= i + 1 %>
+            <% end %>
+                <div class="progressBarControl__loading" id="progressBarControl__loading"> </div>
+              </div>
+              <div class="bloc_close_btn" onclick= "closebar()">
+
+              &times
+              </div>
+            </div>
+
   </body>
 
 </html>

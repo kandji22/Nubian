@@ -63,19 +63,30 @@ function cache (e) {
 
    function play(idPlayer, control) {
        var player = document.querySelector('#' + idPlayer);
+
+
+       player.controls=true
         window.currentPlay=player
        if (player.paused) {
          let progressBarControl__loadingControl = document.getElementById('progressBarControl__loadingControl')
-         let close_btn = document.querySelector('.bloc_close_btn')
+          window.namesong=document.getElementById("loadingControl"+ idPlayer)
+
          progressBarControl__loadingControl.style.left=0
-         close_btn.style.left='80%'
+
            player.play();
-           control.textContent = 'Pause';
+           control.innerHTML = 'Pause';
+           namesong.style.display="block"
        } else {
            player.pause();
            control.textContent = 'Play';
+            player.controls=false
+          
+            namesong.style.display="none"
        }
    }
+
+
+
 
    function resume(idPlayer) {
        var player = document.querySelector('#' + idPlayer);
@@ -94,11 +105,6 @@ function cache (e) {
      var time     = player.currentTime; // Temps écoulé
      var fraction = time / duration;
      var percent  = Math.ceil(fraction * 100);
-
-     var progress = document.querySelector('#progressBarControl__loading');
-
-     progress.style.width = percent + '%';
-     progress.textContent = formatTime(time)
  }
  /**
   * add listen progress bar
@@ -185,10 +191,19 @@ Retrieve the coordinates of the mouse cursor
 
   function closebar() {
     progressBarControl__loadingControl = document.getElementById('progressBarControl__loadingControl')
-    close_btn = document.querySelector('.bloc_close_btn')
-   progressBarControl__loadingControl.style.left='-200%'
-   close_btn.style.left='-200%'
+
+    if(getComputedStyle(progressBarControl__loadingControl).left=="-2560px")
+    {
+
+      progressBarControl__loadingControl.style.left = "0px"
+
+    }
+    else {
+   progressBarControl__loadingControl.style.left="-2560px"
+}
   }
+
+
 
   /**
    *

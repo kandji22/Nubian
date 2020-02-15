@@ -36,9 +36,14 @@
           <li> <%= link_to(translate("release"),albums_path) %> </li>
           <li> <%= link_to(translate("artist"),artists_path) %></li>
           <li> <%= link_to(translate("event"),agendas_path,class: "active") %> </li>
-          <li> <a href="whish.html">WHICH LIST </a></li>
+          <% if login?  %>
+          <li> <%= link_to(translate("follower"), user_wichlists_path(current_user)) %> </li>
+          <% end %>
           <% if onlyadmincanedit?  %>
           <li> <%= link_to("admin", admin_artists_path) %> </li>
+          <% end %>
+          <% I18n.available_locales.each do |locale| %>
+          <li>  <%= link_to(locale,url_for(locale: locale),class:"nav-link") %> </li>
           <% end %>
         </ul>
       </nav>
@@ -59,11 +64,17 @@
           <li> <%= link_to(translate("release"),albums_path) %> </li>
           <li> <%= link_to(translate("artist"),artists_path) %></li>
           <li> <%= link_to(translate("event"),agendas_path,class: "active") %> </li>
+          <% if login?  %>
+          <li> <%= link_to(translate("follower"), user_wichlists_path(current_user)) %> </li>
+          <% end %>
           <% if onlyadmincanedit?  %>
           <li> <%= link_to("admin", admin_artists_path) %> </li>
           <% end %>
+          <% I18n.available_locales.each do |locale| %>
+          <li>  <%= link_to(locale,url_for(locale: locale),class:"nav-link") %> </li>
+          <% end %>
         </ul>
-        
+
       </nav>
     </header>
 

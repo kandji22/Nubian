@@ -25,9 +25,7 @@ class AlbumsController < ApplicationController
     end
     respond_to do |format|
       if @album.save
-        # In this format call, the flash message is being passed directly to
-        # redirect_to().  It's a caonvenient way of setting a flash notice or
-        # alert without referencing the flash Hash explicitly.
+        AlbumMailer.new_album(@album).deliver_now
         format.html { redirect_to admin_showalbum_path(@album), notice: 'album was successfully created.' }
       else
         format.html { render :new }

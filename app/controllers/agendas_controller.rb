@@ -13,9 +13,7 @@ class AgendasController < ApplicationController
     @agenda = Agenda.new(agenda_params)
     respond_to do |format|
       if @agenda.save
-        # In this format call, the flash message is being passed directly to
-        # redirect_to().  It's a caonvenient way of setting a flash notice or
-        # alert without referencing the flash Hash explicitly.
+        AgendaMailer.new_agenda(@agenda).deliver_now
         format.html { redirect_to @agenda, notice: 'agenda was successfully created.' }
       else
         format.html { render :new }

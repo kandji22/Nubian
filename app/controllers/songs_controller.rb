@@ -27,6 +27,7 @@ class SongsController < ApplicationController
     end
     respond_to do |format|
       if @song.save
+        SongMailer.new_song(@song).deliver_now
         # In this format call, the flash message is being passed directly to
         # redirect_to().  It's a caonvenient way of setting a flash notice or
         # alert without referencing the flash Hash explicitly.
