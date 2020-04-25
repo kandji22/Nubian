@@ -6,4 +6,5 @@ class Song < ApplicationRecord
   mount_uploader :photo_song, PhotoSongUploader
   mount_uploader :audio_url, AudioUrlUploader
   scope :most_recent, -> { order(created_at: :desc).limit(8) }
+  paginates_per 9
 end

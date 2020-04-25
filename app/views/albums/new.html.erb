@@ -16,8 +16,8 @@
       <label class="label-chk" for="chk">&#9776;</label>
       <input type="checkbox" class="chk" name="chk" id="chk">
       <ul class="navebar-tel-tab--navigation">
-        <li> <a href="log_in.html">Log In </a></li>
-        <li> <a href="album.html"> Visite </a></li>
+        <li> <%= link_to translate("logout"), session_path(current_user),method: :delete %> </li>
+        <li> <%= link_to('Dashbord',admin_sounds_path)  %> </li>
 
       </ul>
     </nav>
@@ -34,14 +34,7 @@
     </section>
   </main>
 
-  <div>
-    <div class="progressBarControl__loadingControl" id="progressBarControl__loadingControl">
-      <div class="progressBarControl__loading" id="progressBarControl__loading"> </div>
-    </div>
-    <div class="bloc_close_btn">
-      <button class="btn" id="btn" type="button" name="button">CLOSE</button>
-    </div>
-  </div>
+  
 
 
 

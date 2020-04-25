@@ -1,18 +1,18 @@
 
-<div class="bloc-presentation">
+<div class="bloc-presentation" id="bloc-presentation">
   <p id="notice"><%= notice %></p>
 <div class="bloc-notice">
 </div>
 <div class="card-presentation">
   <div class="info-and-card reveal">
-    <div class="info">
-      <h3> <%= song.name %> </h3>
+    <div class="info info--show">
+      <%= song.name %>
 
     </div>
-    <div class="card">
-
+    <div class="card card--show">
       <%= image_tag(song.photo_song)  %>
     </div>
   </div>
 
   </div>
+</div>

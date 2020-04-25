@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_artist
   before_action :login?
   def create
@@ -15,7 +16,7 @@ class CommentsController < ApplicationController
       # In these format calls, the flash message is being passed directly to
       # redirect_to().  It's a caonvenient way of setting a flash notice or
       # alert without referencing the flash Hash explicitly.
-      if @comment.save!
+      if @comment.save
         CommentMailer.new_comment(@comment).deliver_now
         format.html { redirect_to @artist }
         format.js
@@ -25,11 +26,20 @@ class CommentsController < ApplicationController
     end
   end
 
-  private
-
   def set_artist
     @artist = Artist.find(params[:artist_id])
   end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    respond_to do |format|
+      format.html { redirect_to @artist }
+      format.js
+    end
+end
+
+  private
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def comment_params

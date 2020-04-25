@@ -1,0 +1,70 @@
+<body class="body_form">
+
+  <!--
+  ===================
+  =========== bloc header document
+  ===================
+  -->
+  <header>
+
+    <!--
+    ===================
+    =========== navigation bar for telephone/tablet
+    ===================
+    -->
+    <nav class="navebar-tel-tab" style="display:block;">
+      <label class="label-chk" for="chk">&#9776;</label>
+      <input type="checkbox" class="chk" name="chk" id="chk">
+      <ul class="navebar-tel-tab--navigation">
+      <li>  <%= link_to("LOG IN",new_session_path)  %> </li>
+        <li> <%= link_to("LATEST",songs_path) %> </li>
+
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="cadre">
+
+      <div class="text--center">
+        <h1 class="gamma">Update User</h1>
+      </div>
+
+<%= form_for(@user, :url => password_reset_path(params[:id])) do |form| %>
+  <% if @user.errors.any? %>
+    <%= render partial: 'model_errors', locals: { model: @user } %>
+  <% end %>
+<div class="input-group" id="bloc-name">
+  <%= form.label :name, class: 'input-group__label' %>
+    <%= form.text_field :name, class: 'input-group__field', placeholder: 'your name', id: "name" %>
+</div>
+<div class="input-group" id="bloc-email">
+
+  <%= form.label :mail, class: 'input-group__label' %>
+
+  <%= form.text_field :mail, class: 'input-group__field', placeholder: "kandji.k66@gmail.com", id: "email" %>
+</div>
+<div class="input-group" id="bloc-password">
+  <%= form.label :password, class: 'input-group__label' %>
+
+  <%= form.password_field :password, class: 'input-group__field', placeholder: "********" ,id: "password" %>
+</div>
+
+<div class="input-group" id="bloc-file">
+
+  <%= form.label :profil_img, class: 'input-group__label' %>
+  <%= form.file_field :profil_img, class: "input-group__field" ,id: "img_profil" %>
+</div>
+<div class="prompt">
+
+   <%= form.submit  class: "btn btn--primary prompt__confirm" %>
+</div>
+<% end %>
+</section>
+</main>
+
+
+
+
+
+</body>

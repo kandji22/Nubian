@@ -33,14 +33,7 @@
 =========== block header
 ===================
 -->
-  <header>
-    <nav>
-      <ul class="main__admin">
-        <li> <a href="#"> LOG OUT </a> </li>
-        <li> <%= link_to("VIEW MODIFICATION",agendas_path) %> </li>
-      </ul>
-    </nav>
-  </header>
+  <%= render(partial: "navadmin")  %>
 
   <!--
   ===================
@@ -110,7 +103,7 @@
               <th>Edit</th>
               <th>Delete</th>
             </tr>
-              <%= @agendas.each do |agenda| %>
+              <% @agendas.each do |agenda| %>
             <tr>
               <td>  <%=agenda.name %>  </td>
               <td>
@@ -133,7 +126,7 @@
         </div>
       </div>
     </div>
-    
+
 
 
 </body>

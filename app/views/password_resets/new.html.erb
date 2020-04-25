@@ -1,0 +1,54 @@
+<body class="body_form">
+
+  <!--
+  ===================
+  =========== bloc header document
+  ===================
+  -->
+  <header>
+
+    <!--
+    ===================
+    =========== navigation bar for telephone/tablet
+    ===================
+    -->
+    <nav class="navebar-tel-tab" style="display:block;">
+      <label class="label-chk" for="chk">&#9776;</label>
+      <input type="checkbox" class="chk" name="chk" id="chk">
+      <ul class="navebar-tel-tab--navigation">
+      <li>  <%= link_to("LOG IN",new_session_path)  %> </li>
+        <li> <%= link_to("LATEST",songs_path) %> </li>
+
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="cadre">
+
+      <div class="text--center">
+        <h1 class="gamma">Update User</h1>
+      </div>
+ <p id="notice"><%= alert %></p>
+
+<%= form_tag(password_resets_path,:method => :post) do %>
+
+<div class="input-group">
+
+  <%= email_field_tag :mail,nil, class: 'input-group__field', placeholder: 'e.g. kanj@.com' %>
+
+</div>
+
+  <div class="prompt">
+
+    <%= submit_tag 'Reset Password', class: "btn btn--primary prompt__confirm" %>
+  </div>
+  <% end %>
+</section>
+</main>
+
+
+
+
+
+</body>

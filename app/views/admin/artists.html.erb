@@ -33,14 +33,7 @@
 =========== block header
 ===================
 -->
-  <header>
-    <nav>
-      <ul class="main__admin">
-        <li> <%= link_to translate("logout"), session_path(current_user),method: :delete %> </li>
-        <li> <%= link_to(translate("viewmodification"),artists_path) %> </li>
-      </ul>
-    </nav>
-  </header>
+  <%= render(partial: "navadmin")  %>
 
   <!--
   ===================
@@ -109,7 +102,7 @@
               <th>Edit</th>
               <th>Delete</th>
             </tr>
-            <%= @artists.each do |artist| %>
+            <% @artists.each do |artist| %>
             <tr>
               <td> <%=artist.name %>    </td>
 

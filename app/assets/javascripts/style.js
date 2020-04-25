@@ -1,4 +1,16 @@
 
+
+
+$( document ).ready(function() {
+    $('#form-input').bind('keypress', function(event) {
+      var code=event.keyCode; //Selon le navigateur c'est which ou keyCode
+      if (code==13) { //le code de la touche Enter
+          document.getElementById("form_comment").submit();
+      }
+    });
+});
+
+
 /*
 scroll Animation
  */
@@ -80,7 +92,7 @@ function cache (e) {
            player.pause();
            control.textContent = 'Play';
             player.controls=false
-          
+
             namesong.style.display="none"
        }
    }
