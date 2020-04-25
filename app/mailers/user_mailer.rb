@@ -11,4 +11,9 @@ class UserMailer < ApplicationMailer
 
     mail to: user.mail, subject: 'Sign Up Confirmation'
   end
+
+  def password_reset(user)
+    @user = user
+    mail to: user.mail, subject: 'password Reset'
+  end
 end

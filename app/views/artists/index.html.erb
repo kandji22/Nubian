@@ -22,12 +22,15 @@
       <label class="label-chk" for="chk">&#9776;</label>
       <input type="checkbox" class="chk" name="chk" id="chk">
       <ul class="navebar-tel-tab--navigation">
+        <li> <%= link_to translate("home"),root_path %></li>
         <li> <%= link_to(translate("latest"),songs_path) %> </li>
         <li> <%= link_to(translate("release"),albums_path) %> </li>
         <li> <%= link_to(translate("artist"),artists_path,class: "active") %></li>
         <li> <%= link_to(translate("event"),agendas_path) %> </li>
         <% if login?  %>
         <li> <%= link_to(translate("follower"), user_wichlists_path(current_user)) %> </li>
+        <li> <%= link_to translate("profil"), edit_user_path(current_user) %> </li>
+        <li> <%= link_to translate("logout"), session_path(current_user),method: :delete %> </li>
         <% end %>
         <% if onlyadmincanedit?  %>
         <li> <%= link_to("admin", admin_artists_path) %> </li>
@@ -56,6 +59,8 @@
         <li> <%= link_to(translate("event"),agendas_path) %> </li>
         <% if login?  %>
         <li> <%= link_to(translate("follower"), user_wichlists_path(current_user)) %> </li>
+        <li> <%= link_to translate("profil"), edit_user_path(current_user) %> </li>
+        <li> <%= link_to translate("logout"), session_path(current_user),method: :delete %> </li>
         <% end %>
         <% if onlyadmincanedit?  %>
         <li> <%= link_to("admin", admin_artists_path) %> </li>
@@ -77,7 +82,7 @@
   <div class="bloc_menu" id="bloc_menu">
     <ul class="menu_artiste">
       <% @artists.each  do |artist| %>
-      <li> <%= link_to(artist.name,artist_path(artist),class: "name_artiste",onmouseover: "affiche(this)",onmouseout: "cache(this)") %>
+      <li class="bloc-photo_artiste"> <%= link_to(artist.name,artist_path(artist),class: "name_artiste",onmouseover: "affiche(this)",onmouseout: "cache(this)") %>
 <%= image_tag artist.photo_artist,class: "photo_artiste cache" %>
       </li>
       <% end %>

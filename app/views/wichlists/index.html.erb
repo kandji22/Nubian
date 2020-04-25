@@ -1,4 +1,5 @@
-<body class="follower">
+
+  <body class="follower" onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;" >
 
   <!--
   ===================
@@ -34,6 +35,7 @@
       <label class="label-chk" for="chk">&#9776;</label>
       <input type="checkbox" class="chk" name="chk" id="chk">
       <ul class="navebar-tel-tab--navigation">
+        <li> <%= link_to translate("home"),root_path %></li>
         <li> <%= link_to(translate("latest"),songs_path) %> </li>
         <li> <%= link_to(translate("release"),albums_path,class: "active") %> </li>
         <li> <%= link_to(translate("artist"),artists_path) %></li>
@@ -62,7 +64,7 @@
       ===================
       -->
     <h1 id="track"> <%= translate("followeralbum") %></h1>
-    <%= @wichlists.each do |wichlist| %>
+    <% @wichlists.each do |wichlist| %>
     <div>
     <div class="track " id="track<%= wichlist.id %>">
       <div class="track-card">
@@ -72,7 +74,7 @@
         </div>
         <div class="card-button">
 
-            <%= link_to 'Delete', user_wichlist_path(current_user,wichlist.id), class: 'btn ', role: 'button',method: :delete, remote: true %>
+            <%= link_to 'Delete', user_wichlist_path(current_user,wichlist.id), class: 'btn btn--wichlist', role: 'button',method: :delete, remote: true %>
 
         </div>
       </div>
@@ -104,22 +106,19 @@
     </div>
       </div>
     <div>
-      <div class="progressBarControl__loadingControl" id="progressBarControl__loadingControl" onclick="clickProgress(window.currentPlay,this,event)">
+      <div  id="progressBarControl__loadingControl" onclick="clickProgress(window.currentPlay,this,event)">
         <% i = 0 %>
         <% wichlist.songs.each do |song|  %>
     <audio class="sound" id="sound<%= i %>" ontimeupdate="update(this)">
       <source src=<%= song.audio_url %>>
     </audio>
-    <span class="progressBarControl__loadingControl--song" id="loadingControlsound<%= i %>" style="display:none"> <%= song.name %> </span>
+
     <% i= i + 1 %>
     <% end %>
 
-        <div class="progressBarControl__loading" id="progressBarControl__loading"> </div>
-      </div>
-      <div class="bloc_close_btn" onclick= "closebar()">
 
-      &times
       </div>
+
     </div>
     <% end %>
 

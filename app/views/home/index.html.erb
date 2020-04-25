@@ -14,8 +14,8 @@
     =========== bloc header document
     ===================
     -->
-    <header class="home-header">
-
+    <header>
+<%= video_tag "vid.mp4", autoplay: true,class:"home_video" %>
       <!--
       ===================
       =========== bloc navigation bar for telephone/tablet
@@ -26,6 +26,7 @@
         <input class="chk" id="chk" name="chk" type="checkbox">
         <ul class="navebar-tel-tab--navigation">
           <li> <%= link_to("LATEST",songs_path) %> </li>
+          <li> <%= link_to("LOG IN",new_session_path)  %>  </li>
         </ul>
       </nav>
 
@@ -73,7 +74,7 @@ explanation concepts nubian spirit
     ===================
     -->
     <div class="description__artiste" title="description artiste">
-      <%= image_tag("wather.jpg", class: "description__artiste--img reveal__2 reveal_visible", alt: "image artiste") %>
+      <%= image_tag("art5.jpg", class: "description__artiste--img reveal__2 reveal_visible", alt: "image artiste") %>
       <div class="description__paragraphe">
         <p class="home__paragraphe description__paragraphe--black reveal__3 reveal_visible"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
@@ -83,7 +84,7 @@ explanation concepts nubian spirit
       </div>
     </div>
     <div class="description__artiste">
-        <%= image_tag("aziz.jpg", class: "description__artiste--img reveal__2 reveal_visible", alt: "image artiste") %>
+        <%= image_tag("art6.jpg", class: "description__artiste--img reveal__2 reveal_visible", alt: "image artiste") %>
       <div class="description__paragraphe reveal_visible">
         <p class="home__paragraphe description__paragraphe--black reveal__3 reveal_visible"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
@@ -93,7 +94,7 @@ explanation concepts nubian spirit
       </div>
     </div>
     <div class="description__artiste">
-      <%= image_tag("witness.jpg", class: "description__artiste--img reveal__2 reveal_visible", alt: "image artiste") %>
+      <%= image_tag("art6.jpg", class: "description__artiste--img reveal__2 reveal_visible", alt: "image artiste") %>
       <div class="description__paragraphe reveal_visible">
         <p class="home__paragraphe description__paragraphe--black reveal__3 reveal_visible"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
@@ -103,7 +104,7 @@ explanation concepts nubian spirit
       </div>
 
     </div>
-  
+
 
     <!--
     ===================

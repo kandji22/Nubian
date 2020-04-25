@@ -7,8 +7,9 @@ Rails.application.routes.draw do
       resources :wichlists
     end
     resources :sessions, only: %i[new create destroy]
+    resources :password_resets
     resources :artists do
-      resources :comments, only: [:create]
+      resources :comments, only: %i[create destroy]
     end
     resources :songs
     resources :albums

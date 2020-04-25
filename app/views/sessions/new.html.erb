@@ -16,8 +16,8 @@
       <label class="label-chk" for="chk">&#9776;</label>
       <input type="checkbox" class="chk" name="chk" id="chk">
       <ul class="navebar-tel-tab--navigation">
-        <li> <a href="sign_up.html">Sign Up </a></li>
-        <li> <a href="album.html"> Visite </a></li>
+        <li> <%= link_to translate("home"),root_path %></li>
+        <li> <%= link_to translate("signup"),new_user_path %></li>
 
       </ul>
     </nav>
@@ -25,7 +25,7 @@
 
   <main>
     <section class="cadre">
-      <%= link_to translate("signup"),new_user_path,style: "color: green;" %>
+
       <div class="text--center">
           <h1 class="gamma"><%=translate("login") %></h1>
       </div>
@@ -47,6 +47,8 @@
 
           <%= password_field_tag :password,nil,class: 'input-group__field' %>
         </div>
+        <p> <%= link_to "forgotten password?",new_password_reset_path  %></p>
+      
         <div class="prompt">
 
           <%= submit_tag 'Log in', class: "btn btn--primary prompt__confirm" %>
@@ -55,14 +57,7 @@
     </section>
   </main>
 
-  <div>
-    <div class="progressBarControl__loadingControl" id="progressBarControl__loadingControl">
-      <div class="progressBarControl__loading" id="progressBarControl__loading"> </div>
-    </div>
-    <div class="bloc_close_btn">
-      <button class="btn" id="btn" type="button" name="button">CLOSE</button>
-    </div>
-  </div>
+
 
 
 </body>

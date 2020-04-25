@@ -33,14 +33,7 @@
 =========== block header
 ===================
 -->
-  <header>
-    <nav>
-      <ul class="main__admin">
-        <li> <a href="#"> LOG OUT </a> </li>
-        <li> <%= link_to("VIEW MODIFICATION",albums_path) %> </li>
-      </ul>
-    </nav>
-  </header>
+  <%= render(partial: "navadmin")  %>
 
   <!--
   ===================
@@ -109,7 +102,7 @@
               <th>Edit</th>
               <th>Delete</th>
             </tr>
-              <%= @albums.each do |album| %>
+              <% @albums.each do |album| %>
             <tr>
               <td>  <%=album.name %>  </td>
               <td>

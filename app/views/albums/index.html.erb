@@ -13,8 +13,8 @@
 ===================
 -->
 
-  <body class="showalbum">
 
+<body class="showalbum" onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;" >
     <!--
   ===================
   =========== block header
@@ -31,12 +31,15 @@
         <label class="label-chk" for="chk">&#9776;</label>
         <input type="checkbox" class="chk" name="chk" id="chk">
         <ul class="navebar-tel-tab--navigation">
+          <li> <%= link_to translate("home"),root_path %></li>
           <li> <%= link_to(translate("latest"),songs_path) %> </li>
           <li> <%= link_to(translate("release"),albums_path,class: "active") %> </li>
           <li> <%= link_to(translate("artist"),artists_path) %></li>
           <li> <%= link_to(translate("event"),agendas_path) %> </li>
           <% if login?  %>
           <li> <%= link_to(translate("follower"), user_wichlists_path(current_user)) %> </li>
+            <li> <%= link_to translate("profil"), edit_user_path(current_user) %> </li>
+          <li> <%= link_to translate("logout"), session_path(current_user),method: :delete %> </li>
           <% end %>
           <% if onlyadmincanedit?  %>
           <li> <%= link_to("admin", admin_artists_path) %> </li>
@@ -65,6 +68,8 @@
           <li> <%= link_to(translate("event"),agendas_path) %> </li>
           <% if login?  %>
           <li> <%= link_to(translate("follower"), user_wichlists_path(current_user)) %> </li>
+            <li> <%= link_to translate("profil"), edit_user_path(current_user) %> </li>
+          <li> <%= link_to translate("logout"), session_path(current_user),method: :delete %> </li>
           <% end %>
           <% if onlyadmincanedit?  %>
           <li> <%= link_to("admin", admin_artists_path) %> </li>
@@ -113,6 +118,10 @@
           <% end %>
       </div>
 
+
+      <div class="see-more">
+        <%= paginate @album %>
+      </div>
       <!--
     ===================
     =========== end div content

@@ -4,6 +4,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
   before_action :ensure_authenticated, only: %i[edit update destroy]
   before_action :authorize_to_edit_user, only: %i[edit update destroy]
+  def edit
+    @user = User.find(params[:id])
+   end
 
   def new
     @user = User.new

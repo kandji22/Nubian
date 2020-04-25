@@ -25,5 +25,14 @@ zonecomment.appendChild(image)
 zonecomment.appendChild(span)
 zonecomment.appendChild(span2)
 zonecomment.appendChild(paragraphe)
+location.reload();
 
+}
+
+
+
+
+Comments.DestroyComment = function(commentid) {
+  document.getElementById(commentid).parentElement.remove()
+  location.reload();
 }

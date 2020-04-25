@@ -1,0 +1,3 @@
+export SECRET_KEY_BASE=730ca7017ce216a10a14ee7cc4e0f4de81f2ad735af9ab3a30b751e8804e772f601af2d58943e02f866a482d1df79641bf0197a5a866bb46186f96395bc1316b
+export RAILS_SERVE_STATIC_FILES=true
+rails server --environment production

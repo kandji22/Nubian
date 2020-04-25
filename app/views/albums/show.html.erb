@@ -1,4 +1,4 @@
-<body>
+<body  onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;" >
 
   <!--
   ===================
@@ -23,26 +23,33 @@
   =========== bloc header document
   ===================
   -->
-  <header>
+  <!--
+  ===================
+  =========== navigation bar for telephone/tablet
+  ===================
+  -->
+  <nav class="navebar-tel-tab">
+    <label class="label-chk" for="chk">&#9776;</label>
+    <input type="checkbox" class="chk" name="chk" id="chk">
+    <ul class="navebar-tel-tab--navigation">
+      <li> <%= link_to translate("home"),root_path %></li>
+      <li> <%= link_to(translate("latest"),songs_path) %> </li>
+      <li> <%= link_to(translate("release"),albums_path,class: "active") %> </li>
+      <li> <%= link_to(translate("artist"),artists_path) %></li>
+      <li> <%= link_to(translate("event"),agendas_path) %> </li>
+      <% if login?  %>
+      <li> <%= link_to(translate("follower"), user_wichlists_path(current_user)) %> </li>
+        <li> <%= link_to translate("profil"), edit_user_path(current_user) %> </li>
+      <li> <%= link_to translate("logout"), session_path(current_user),method: :delete %> </li>
+      <% end %>
+      <% if onlyadmincanedit?  %>
+      <li> <%= link_to("admin", admin_artists_path) %> </li>
+      <% end %>
+    </ul>
+  </nav>
+  <header style='background-image: url("<%=@album.photo_album %>");background-size:cover;background-attachment: fixed;' class="bloc_imagebackground">
 
-    <!--
-    ===================
-    =========== navigation bar for telephone/tablet
-    ===================
-    -->
-    <nav class="navebar-tel-tab">
-      <label class="label-chk" for="chk">&#9776;</label>
-      <input type="checkbox" class="chk" name="chk" id="chk">
-      <ul class="navebar-tel-tab--navigation">
-        <li> <%= link_to(translate("latest"),songs_path) %> </li>
-        <li> <%= link_to(translate("release"),albums_path,class: "active") %> </li>
-        <li> <%= link_to(translate("artist"),artists_path) %></li>
-        <li> <%= link_to(translate("event"),agendas_path) %> </li>
-        <% if onlyadmincanedit?  %>
-        <li> <%= link_to("admin", admin_artists_path) %> </li>
-        <% end %>
-      </ul>
-    </nav>
+
 
     <!--
     ===================
@@ -50,7 +57,7 @@
     ===================
     -->
     <nav class="navebar">
-        <%= image_tag(@album.photo_album, class: "image_background", alt: "image background" ) %>
+
       <div class="navebar__absolute">
         <div class="bloc_logo">
           <%= link_to(root_path) do %>
@@ -64,6 +71,8 @@
           <li> <%= link_to(translate("event"),agendas_path) %> </li>
           <% if login?  %>
           <li> <%= link_to(translate("follower"), user_wichlists_path(current_user)) %> </li>
+          <li> <%= link_to translate("profil"), edit_user_path(current_user) %> </li>
+        <li> <%= link_to translate("logout"), session_path(current_user),method: :delete %> </li>
           <% end %>
           <% if onlyadmincanedit?  %>
           <li> <%= link_to("admin", admin_artists_path) %> </li>
@@ -78,7 +87,7 @@
   =========== bloc content for to make border left and right
   ===================
   -->
-  <div class="content content--artiste content--album">
+  <div class="content content--artiste">
 
 
 
@@ -97,14 +106,15 @@
             <%= form_tag(user_wichlists_path(current_user), method: :post) do %>
          <%= hidden_field_tag(:album_id, @album.id) %>
 
-              <%= submit_tag("ADD Album",class: "btn btn--svg", disabled: @disable )%>
+              <%= submit_tag("ADD Album",class: "btn btn--svg btn--album ", disabled: @disable )%>
+              </div>
               <% end %>
               <% end %>
           </div>
-        </div>
+</div>
 
-      </div>
-      <div class="playlist">
+
+      <div class="playlist playlist--album">
         <table class="playlist__media">
           <tr>
             <th>#</th>
@@ -123,6 +133,7 @@
         </table>
       </div>
     </div>
+
 
     <!--
       ===================

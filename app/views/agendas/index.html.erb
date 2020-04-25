@@ -37,7 +37,12 @@
           <li> <%= link_to(translate("artist"),artists_path) %></li>
           <li> <%= link_to(translate("event"),agendas_path,class: "active") %> </li>
           <% if login?  %>
+
           <li> <%= link_to(translate("follower"), user_wichlists_path(current_user)) %> </li>
+            <li> <%= link_to translate("profil"), edit_user_path(current_user) %> </li>
+          <li> <%= link_to translate("logout"), session_path(current_user),method: :delete %> </li>
+
+
           <% end %>
           <% if onlyadmincanedit?  %>
           <li> <%= link_to("admin", admin_artists_path) %> </li>
@@ -60,12 +65,15 @@
            <% end %>
         </div>
         <ul class="main-navigation">
+          
           <li> <%= link_to(translate("latest"),songs_path) %> </li>
           <li> <%= link_to(translate("release"),albums_path) %> </li>
           <li> <%= link_to(translate("artist"),artists_path) %></li>
           <li> <%= link_to(translate("event"),agendas_path,class: "active") %> </li>
           <% if login?  %>
           <li> <%= link_to(translate("follower"), user_wichlists_path(current_user)) %> </li>
+          <li> <%= link_to translate("logout"), session_path(current_user),method: :delete %> </li>
+            <li> <%= link_to translate("profil"), edit_user_path(current_user) %> </li>
           <% end %>
           <% if onlyadmincanedit?  %>
           <li> <%= link_to("admin", admin_artists_path) %> </li>

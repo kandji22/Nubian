@@ -33,14 +33,7 @@
 =========== block header
 ===================
 -->
-  <header>
-    <nav>
-      <ul class="main__admin">
-        <li> <a href="#"> Log Out </a> </li>
-        <li> <a href="#"> View Modification </a> </li>
-      </ul>
-    </nav>
-  </header>
+  <%= render(partial: "navadmin")  %>
 
   <!--
   ===================
@@ -109,7 +102,7 @@
               <th>Delete</th>
             </tr>
 
-            <%= @users.each do |user| %>
+            <% @users.each do |user| %>
             <tr>
               <td> <%=user.name %>     </td>
 
@@ -133,7 +126,7 @@
         </div>
       </div>
     </div>
-    
+
 
 
 </body>

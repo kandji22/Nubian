@@ -1,4 +1,4 @@
-<body>
+<body onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;" >
 
   <!--
   ===================
@@ -17,38 +17,42 @@
       </symbol>
     </defs>
   </svg>
+  <!--
+  ===================
+  =========== navigation bar for telephone/tablet
+  ===================
+  -->
+  <nav class="navebar-tel-tab">
+    <label class="label-chk" for="chk">&#9776;</label>
+    <input type="checkbox" class="chk" name="chk" id="chk">
+    <ul class="navebar-tel-tab--navigation">
+      <li> <%= link_to translate("home"),root_path %></li>
+      <li> <%= link_to(translate("latest"),songs_path) %> </li>
+      <li> <%= link_to(translate("release"),albums_path) %> </li>
+      <li> <%= link_to(translate("artist"),artists_path,class: "active") %></li>
+      <li> <%= link_to(translate("event"),agendas_path) %> </li>
+      <% if login?  %>
+      <li> <%= link_to(translate("follower"), user_wichlists_path(current_user)) %> </li>
+      <li> <%= link_to translate("profil"), edit_user_path(current_user) %> </li>
+      <li> <%= link_to translate("logout"), session_path(current_user),method: :delete %> </li>
+      <% end %>
+      <% if onlyadmincanedit?  %>
+      <li> <%= link_to("admin", admin_artists_path) %> </li>
+      <% end %>
+      <% I18n.available_locales.each do |locale| %>
+      <li>  <%= link_to(locale,url_for(locale: locale),class:"nav-link") %> </li>
+      <% end %>
+    </ul>
+  </nav>
 
   <!--
   ===================
   =========== bloc header document
   ===================
   -->
-  <header>
+  <header style='background-image: url("<%=@artist.photo_artist %>");background-size:cover;background-attachment: fixed;' class="bloc_imagebackground">
 
-    <!--
-    ===================
-    =========== navigation bar for telephone/tablet
-    ===================
-    -->
-    <nav class="navebar-tel-tab">
-      <label class="label-chk" for="chk">&#9776;</label>
-      <input type="checkbox" class="chk" name="chk" id="chk">
-      <ul class="navebar-tel-tab--navigation">
-        <li> <%= link_to(translate("latest"),songs_path) %> </li>
-        <li> <%= link_to(translate("release"),albums_path) %> </li>
-        <li> <%= link_to(translate("artist"),artists_path,class: "active") %></li>
-        <li> <%= link_to(translate("event"),agendas_path) %> </li>
-        <% if login?  %>
-        <li> <%= link_to(translate("follower"), user_wichlists_path(current_user)) %> </li>
-        <% end %>
-        <% if onlyadmincanedit?  %>
-        <li> <%= link_to("admin", admin_artists_path) %> </li>
-        <% end %>
-        <% I18n.available_locales.each do |locale| %>
-        <li>  <%= link_to(locale,url_for(locale: locale),class:"nav-link") %> </li>
-        <% end %>
-      </ul>
-    </nav>
+
 
     <!--
     ===================
@@ -71,6 +75,8 @@
           <li> <%= link_to(translate("event"),agendas_path) %> </li>
           <% if login?  %>
           <li> <%= link_to(translate("follower"), user_wichlists_path(current_user)) %> </li>
+          <li> <%= link_to translate("profil"), edit_user_path(current_user) %> </li>
+          <li> <%= link_to translate("logout"), session_path(current_user),method: :delete %> </li>
           <% end %>
           <% if onlyadmincanedit?  %>
           <li> <%= link_to("admin", admin_artists_path) %> </li>
@@ -81,7 +87,7 @@
         </ul>
       </div>
     </nav>
-    <%= image_tag(@artist.photo_artist, class: "image_background", alt: "image background" ) %>
+
   </header>
 
   <!--
@@ -166,16 +172,17 @@
       ===========  ADD Comment
       ===================
       -->
+      <h1> Comments </h1>
+      <% if login? %>
       <div class="div_comments">
-    <h1> Comments </h1>
 
-    <%= form_for([@artist, @artist.comments.build],html: {id: "form_comment",class: "add_comments" },remote: true) do |form| %>
-      <%=image_tag(@artist.photo_artist, class: "profil--img", alt: "image artiste" ) %>
-        <%=form.text_area(:body, class: 'form-input') %>
+    <%= form_for([@artist, @artist.comments.build],html: {id: "form_comment",class: "add_comments"},remote: true) do |form| %>
+      <%=image_tag(current_user.profil_img, class: "profil--img", alt: "image artiste" ) %>
+        <%=form.text_area(:body, class: 'form-input',id: 'form-input',maxlength: 200) %>
       <%= form.submit  class: 'btn btn-primary' %>
   <% end %>
 </div>
-
+  <% end %>
     <!--
       ===================
       ===========  commentaires
@@ -184,12 +191,19 @@
     <div class="comments" id="comments">
 
     <% @artist.comments.order(created_at: :asc).each do |comment| %>
+    <div id=<%=comment.id %>>
       <%= image_tag(comment.user.profil_img, class: "profil--img", alt: "image artiste" ) %>
       <span class="auteur"> <%= comment.user.name %> </span>
       <span class="date"> <%= comment.created_at.strftime("%d %b %y at %I:%M") %></span>
       <p class="comments__paragraphe">
         <%= comment.body %>
       </p>
+      <div class="card-button">
+        <% if current_user == comment.user  %>
+          <%= link_to 'Delete', artist_comment_path(current_user,comment.id), class: 'btn btn--wichlist dashbord_btn', role: 'button',method: :delete, remote: true %>
+<% end %>
+      </div>
+        </div>
       <% end %>
     </div>
 

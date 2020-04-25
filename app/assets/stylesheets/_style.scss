@@ -198,6 +198,9 @@ svg {
   .image_background {
     display: none;
   }
+  .bloc_imagebackground {
+    display: none;
+  }
 
 }
 
@@ -206,6 +209,9 @@ svg {
     display: none;
     background-color: #CCC6C1;
   }
+  .bloc_imagebackground {
+    display: none;
+  }
   .image_background {
     display: none;
   }
@@ -213,9 +219,12 @@ svg {
 
 .image_background {
   top: 8rem;
-  height: 135rem;
-  width: 135rem;
+  height: 100%;
   z-index: 0;
+}
+.bloc_imagebackground {
+  height: 100rem;
+
 
 }
 
@@ -234,7 +243,7 @@ svg {
   z-index: 100000;
   display: flex;
   align-items: center;
-  width: 50%;
+  width: 70%;
   height: 30%;
   padding-left: 4rem;
   margin-right: 4rem;
@@ -305,7 +314,7 @@ svg {
 .navebar_presentation .main-navigation {
   display: flex;
   align-items: center;
-  width: 60%;
+  width: 70%;
   height: 30%;
   padding-left: 4rem;
   margin-right: 4rem;
@@ -358,12 +367,14 @@ svg {
 @media screen and (min-width: 481px) and (max-width: 960px) {
   .footer {
     height: 40rem;
+    justify-content: flex-start;
   }
 }
 
 @media screen and (max-width: 480px) {
   .footer {
     height: 40rem;
+    justify-content: flex-start;
   }
 }
 
@@ -769,6 +780,7 @@ svg:focus {
   margin-left: 5rem;
   width: 40%;
   padding: 1rem;
+  margin-top: 4rem;
 }
 
 @media screen and (min-width: 481px) and (max-width: 960px) {
@@ -806,19 +818,33 @@ svg:focus {
 }
 
 .track-card .track-card--image img {
-  width: 35rem;
+
+  height: 100%;
   margin-bottom: 4rem;
+}
+.track-card--image {
+  height: 35rem;
 }
 
 @media screen and (min-width: 481px) and (max-width: 960px) {
   .track-card .track-card--image img {
-    margin-right: 4rem;
+
+    height: 100%;
+    margin-bottom: 4rem;
+  }
+  .track-card--image {
+    height: 20rem;
   }
 }
 
 @media screen and (max-width: 480px) {
   .track-card .track-card--image img {
-    margin-right: 3rem;
+
+    height: 100%;
+    margin-bottom: 4rem;
+  }
+  .track-card--image {
+    height: 20rem;
   }
 }
 
@@ -827,17 +853,40 @@ svg:focus {
   flex-direction: row;
   justify-content: center;
   margin: 0;
+
+}
+.card-button{
+  .btn--wichlist {
+    padding-right: 0;
+    background-color: red;
+    width: 8rem;
+    height: 1rem;
+  }
+  .btn--wichlist:active,.btn--wichlist:hover{
+    background-color: hsl(0,50%,50%);
+  }
 }
 
 @media screen and (min-width: 481px) and (max-width: 960px) {
   .track-card .card-button {
-    margin-right: 4rem;
+    margin-right: 2rem;
+
+  }
+  .btn--wichlist {
+    padding-right: 0;
+
   }
 }
 
 @media screen and (max-width: 480px) {
   .track-card .card-button {
     margin-right: 3rem;
+
+  }
+  .btn--wichlist {
+    padding-right: 0;
+
+
   }
 }
 
@@ -956,7 +1005,7 @@ svg:focus {
 }
 
 .track .playlist {
-  border-left: 0.5px solid #CCC6C1;
+
   padding-left: 2rem;
   padding-bottom: 4rem;
   padding-top: 4rem;
@@ -1031,11 +1080,25 @@ svg:focus {
   margin: 4rem;
   position: relative;
 }
+.card-presentation .card {
+
+  width: 25rem;
+
+}
+
+
+.card-presentation img {
+
+  width: 100%;
+  border-radius: 3px 3px 0 0;
+}
 
 @media screen and (min-width: 481px) and (max-width: 960px) {
   .card-presentation .card {
-    text-align: center;
-    width: 100%;
+
+    width: 25rem;
+
+
   }
 }
 
@@ -1047,19 +1110,12 @@ svg:focus {
   }
 }
 
-.card-presentation img {
-  height: 25rem;
-  width: 25rem;
-  margin-top: 2rem;
-
-
-}
 .card-presentation .card-presentation__hover  {
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.5);
-  bottom:2.2rem;
-  height: 25rem;
-  width: 25rem;
+  bottom:0;
+  left: 2rem;
+  height: 20rem;
+  width: 85%;
   z-index: 999;
   transform: scale(0);
   transition: ease-in-out 0.7s ;
@@ -1080,10 +1136,14 @@ svg:focus {
 }
 
 .card-presentation .info h3 {
+  margin-bottom: 0;
   color: #EAA400;
 }
 .card-presentation .info span {
   color: #EAA400;
+}
+.info {
+  text-align: left;
 }
 
 @media screen and (min-width: 481px) and (max-width: 960px) {
@@ -1200,7 +1260,7 @@ svg:focus {
 }
 
 .home-header {
-  background: asset-url("home_header.jpg") no-repeat center center fixed;
+  background: asset-url("ar1.jpg") no-repeat center center fixed;
   background-size: cover;
   background-color: red;
   height: 90rem;
@@ -1225,6 +1285,7 @@ svg:focus {
   .home__paragraphe {
 
     width: 30rem;
+
   }
 }
 
@@ -1285,8 +1346,8 @@ svg:focus {
 }
 
 .description__artiste--img {
-  height: 40rem;
-  width: 40rem;
+  height: 30rem;
+  width: 36rem;
 }
 
 .description {
@@ -1295,7 +1356,7 @@ svg:focus {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  background: asset-url("label.jpg") no-repeat center center fixed;
+  background: asset-url("ar1.jpg") no-repeat center center fixed;
   background-size: cover;
   height: 90rem;
 }
@@ -1342,8 +1403,7 @@ svg:focus {
 }
 
 .bloc_menu .photo_artiste {
-  width: 50rem;
-  height: 45rem;
+  height: 100%;
   position: absolute;
   position: fixed;
   top: 18rem;
@@ -1373,7 +1433,7 @@ svg:focus {
 .navebar-tel-tab--navigation {
   background-color: #EAA400;
   position: absolute;
-  height: 60rem;
+  height: 80rem;
   width: 30rem;
   top: 6rem;
   left: -100%;
@@ -1457,6 +1517,9 @@ svg:focus {
   position: absolute;
   bottom:0.2px;
 
+}
+.body__song #progressBarControl__loadingControl{
+  z-index: 999999999999999
 }
 .progressBarControl__loadingControl--artist{
   position: absolute;
@@ -1637,7 +1700,7 @@ svg:focus {
   background-color: #EAA400;
 }
 .admin {
-  background: asset-url("arture.jpg") no-repeat center center fixed;
+  background: asset-url("ar1.jpg") no-repeat center fixed;
 }
 
 /* footer STYLEQUIDE ----
@@ -1653,7 +1716,7 @@ svg:focus {
         --------------
         -----------------------------*/
 .body_form {
-  background: asset-url("arriere_plan_form.jpg") no-repeat center fixed;
+  background: asset-url("ar1.jpg") no-repeat center fixed;
   background-size: cover;
 
 }
@@ -1707,18 +1770,18 @@ width: 30rem;
 
 .card-presentation__circle {
   position: absolute;
-    width: 16rem;
-    height: 16rem;
+    width: 8rem;
+    height: 8rem;
     border-radius: 16rem;
     background: #EAA400;
     bottom: 6rem;
-    left: 8rem;
+    left: 18rem;
     z-index: -222 !important;
     transition: all 0.2s ease-in-out;
 }
 
 .card:hover + .card-presentation__circle {
-  left: 18rem;
+  left: 22rem;
 }
 
 .content--album {
@@ -1732,12 +1795,105 @@ width: 30rem;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  height: 45rem;
-  padding: 0
+
+  padding: 4rem;
 }
 .showalbum {
-  background: asset-url("joel.jpg") no-repeat center center fixed;
+  background: asset-url("art6.jpg") no-repeat center fixed ;
+  background-size: cover;
 }
 .follower {
   background: asset-url("joseph.jpg") no-repeat center center fixed;
+}
+.menu_artiste__image {
+  height: 40rem;
+}
+.menu_artiste__image img {
+  height: 100%;
+}
+.home_video {
+ width: 100vw;
+ height: 100vh;
+
+ display: flex;
+ justify-content: center;
+ object-fit: cover;
+ top: 0;
+
+}
+
+@media screen and (min-width: 481px) and (max-width: 960px) {
+.home_video {
+  display: none;
+}
+}
+
+@media screen and (max-width: 480px) {
+  .home_video {
+    display: none;
+  }
+}
+.see-more {
+
+  padding: 3rem 0;
+  font-size: 5rem;
+  margin: 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  color: #EAA400;
+}
+.see-more--song {
+  color: black;
+}
+.nav-link {
+  font-size: 1rem;
+}
+.info--show h3{
+  margin-right: 50rem;
+}
+.btn--album {
+
+}
+
+@media screen and (min-width: 481px) and (max-width: 960px) {
+  .playlist--album {
+  margin-top: 8rem;
+  }
+  .btn--album {
+    margin-left: 4rem !important;
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+  .playlist--album {
+margin-bottom: 3rem;
+  }
+}
+#bloc-presentation{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  #notice{
+
+    width: 100%;
+    text-align: center;
+
+  }
+  .card {
+    width: 100%;
+  }
+  .info{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+
+  }
+  img{
+    width: 40rem;
+    height: auto;
+  }
 }

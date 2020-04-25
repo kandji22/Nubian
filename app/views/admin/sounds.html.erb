@@ -33,14 +33,7 @@
 =========== block header
 ===================
 -->
-  <header>
-    <nav>
-      <ul class="main__admin">
-        <li> <a href="#"> LOG OUT </a> </li>
-        <li> <%= link_to("VIEW MODIFICATION",songs_path) %> </li>
-      </ul>
-    </nav>
-  </header>
+  <%= render(partial: "navadmin")  %>
 
   <!--
   ===================
@@ -109,7 +102,7 @@
               <th>Edit</th>
               <th>Delete</th>
             </tr>
-            <%= @songs.each do |song| %>
+            <% @songs.each do |song| %>
             <tr>
               <td>  <%=song.name %>    </td>
               <td>
@@ -132,7 +125,7 @@
           </table>
         </div>
       </div>
-    
+
 
 
 </body>

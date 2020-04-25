@@ -17,5 +17,6 @@ module Nubian
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.generators.javascript_engine :js
+    config.assets.paths << "#{Rails.root}/app/assets/videos"
   end
 end

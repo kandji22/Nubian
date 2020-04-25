@@ -64,7 +64,7 @@ class SongsController < ApplicationController
 end
 
   def index
-    @song = Song.most_recent
+    @song = Song.most_recent.page(params[:page])
    end
 
   private
